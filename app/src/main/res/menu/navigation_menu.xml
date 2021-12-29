@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_wild_pokemons"
+        android:title="Wild Pokemons"
+        android:icon="@drawable/ic_baseline_pest_control_rodent_24"/>
+
+    <item
+        android:id="@+id/menu_pokedex_pokemons"
+        android:title="My Pokedex"
+        android:icon="@drawable/ic_baseline_amp_stories_24"/>
+</menu>

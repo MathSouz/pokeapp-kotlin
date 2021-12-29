@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PokeApp</string>
+    <string name="txt_pokemon_height">Altura: %1$d cm</string>
+    <string name="txt_pokemon_weight">Peso: %1$d KG</string>
+    <string name="txt_status">Status</string>
+    <string name="txt_capture">Capturar</string>
+</resources>
