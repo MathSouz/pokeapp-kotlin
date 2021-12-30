@@ -4,5 +4,5 @@ data class SimplePokemon(
     val id : Int,
     val name : String,
     val imageUrl : String,
-    val captured : Boolean = false
+    var captured : Boolean = false
 )

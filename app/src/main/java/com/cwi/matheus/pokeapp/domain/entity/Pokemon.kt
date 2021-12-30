@@ -11,6 +11,5 @@ data class Pokemon(
     val weight : Int,
     val imageUrl : String,
     val stats : List<PokemonStat>,
-    val captured : Boolean = false,
-    val captureDate : LocalDateTime? = null
+    var captured : Boolean = false
 )

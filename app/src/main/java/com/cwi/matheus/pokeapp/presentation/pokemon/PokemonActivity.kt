@@ -45,11 +45,12 @@ class PokemonActivity : BaseBottomNavigationActivity() {
     private fun setupRecyclerView() {
         binding.rvPokemonList.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
 
-        binding.rvPokemonList.adapter = PokemonAdapter(this@PokemonActivity,
-            onListItemClick = { simplePokemon ->  startPokemonDetailActivity(simplePokemon) }
+        val adapter = PokemonAdapter(this@PokemonActivity,
+            onListItemClick = { simplePokemon ->  startPokemonDetailActivity(simplePokemon) },
+            onCaptureClick = { simplePokemon ->  viewModel.setCaptured(simplePokemon)}
         )
 
-        val adapter = binding.rvPokemonList.adapter as PokemonAdapter
+        binding.rvPokemonList.adapter = adapter
 
         viewModel.data.observe(this@PokemonActivity) {
             adapter.appendNewPokemons(it)
