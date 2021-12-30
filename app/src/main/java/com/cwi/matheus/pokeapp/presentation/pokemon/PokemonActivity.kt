@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cwi.matheus.pokeapp.R
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_ID
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_NAME
+import com.cwi.matheus.pokeapp.base.SIMPLE_POKEMONS_PER_PAGE
 import com.cwi.matheus.pokeapp.databinding.ActivityPokemonBinding
 import com.cwi.matheus.pokeapp.domain.entity.SimplePokemon
 import com.cwi.matheus.pokeapp.extension.visibleOrGone
@@ -19,6 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokemonActivity : BaseBottomNavigationActivity() {
 
+    private var page = 0
     private val viewModel : PokemonViewModel by viewModel()
 
     private lateinit var binding : ActivityPokemonBinding
@@ -31,7 +33,7 @@ class PokemonActivity : BaseBottomNavigationActivity() {
         binding = ActivityPokemonBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.fetchSimplePokemon()
+        viewModel.fetchSimplePokemons()
 
         viewModel.loading.observe(this@PokemonActivity) {
             binding.viewLoading.root.visibleOrGone(it)
@@ -43,22 +45,32 @@ class PokemonActivity : BaseBottomNavigationActivity() {
     private fun setupRecyclerView() {
         binding.rvPokemonList.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
 
+        binding.rvPokemonList.adapter = PokemonAdapter(this@PokemonActivity,
+            onListItemClick = { simplePokemon ->  startPokemonDetailActivity(simplePokemon) }
+        )
+
+        val adapter = binding.rvPokemonList.adapter as PokemonAdapter
+
         viewModel.data.observe(this@PokemonActivity) {
-            binding.rvPokemonList.adapter = PokemonAdapter(this@PokemonActivity, it,
-                onListItemClick = { simplePokemon ->  startPokemonDetailActivity(simplePokemon) }
-            )
-            binding.rvPokemonList.layoutManager = LinearLayoutManager(this)
-
-            binding.rvPokemonList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    val linearLayout = recyclerView.layoutManager as LinearLayoutManager
-
-                    if(linearLayout.findLastCompletelyVisibleItemPosition() == it.size - 1) {
-                        viewModel.fetchSimplePokemon()
-                    }
-                }
-            })
+            adapter.appendNewPokemons(it)
         }
+
+        binding.rvPokemonList.layoutManager = LinearLayoutManager(this)
+
+        val scrollListener : RecyclerView.OnScrollListener = object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val linearLayout = recyclerView.layoutManager as LinearLayoutManager
+
+                val lastItemListPosition = linearLayout.findLastCompletelyVisibleItemPosition()
+                val lastItemPosition = recyclerView.adapter?.itemCount?.minus(1)
+                if(lastItemListPosition == lastItemPosition) {
+                    viewModel.fetchSimplePokemons(++page)
+                }
+            }
+        }
+
+        binding.rvPokemonList.removeOnScrollListener(scrollListener)
+        binding.rvPokemonList.addOnScrollListener(scrollListener)
     }
 
     private fun startPokemonDetailActivity(simplePokemon : SimplePokemon) {

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.room.util.StringUtil
 import com.bumptech.glide.Glide
 import com.cwi.matheus.pokeapp.R
+import com.cwi.matheus.pokeapp.base.SIMPLE_POKEMONS_PER_PAGE
 import com.cwi.matheus.pokeapp.databinding.ItemPokemonBinding
 import com.cwi.matheus.pokeapp.domain.entity.SimplePokemon
 import com.cwi.matheus.pokeapp.extension.capitalize
@@ -19,9 +20,15 @@ import com.cwi.matheus.pokeapp.presentation.pokemon.viewHolder.PokemonAdapterVie
 
 class PokemonAdapter(
     private val context : Context,
-    private val list : List<SimplePokemon>,
+    var list : MutableList<SimplePokemon> = mutableListOf(),
     private val onListItemClick : (SimplePokemon) -> Unit) :
     RecyclerView.Adapter<PokemonAdapterViewHolder>() {
+
+    fun appendNewPokemons(newPokemonList : List<SimplePokemon>) {
+        val page = list.size / newPokemonList.size
+        list.addAll(newPokemonList)
+        notifyItemRangeChanged(page * SIMPLE_POKEMONS_PER_PAGE, SIMPLE_POKEMONS_PER_PAGE)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonAdapterViewHolder =
         PokemonAdapterViewHolder(
