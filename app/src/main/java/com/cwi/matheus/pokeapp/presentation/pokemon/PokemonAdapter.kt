@@ -8,10 +8,12 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.util.StringUtil
 import com.bumptech.glide.Glide
 import com.cwi.matheus.pokeapp.R
+import com.cwi.matheus.pokeapp.base.SIMPLE_POKEMONS_PER_PAGE
 import com.cwi.matheus.pokeapp.databinding.ItemPokemonBinding
 import com.cwi.matheus.pokeapp.domain.entity.SimplePokemon
 import com.cwi.matheus.pokeapp.extension.capitalize
@@ -19,9 +21,16 @@ import com.cwi.matheus.pokeapp.presentation.pokemon.viewHolder.PokemonAdapterVie
 
 class PokemonAdapter(
     private val context : Context,
-    private val list : List<SimplePokemon>,
-    private val onListItemClick : (SimplePokemon) -> Unit) :
+    var list : MutableList<SimplePokemon> = mutableListOf(),
+    private val onListItemClick : (SimplePokemon) -> Unit,
+    private val onCaptureClick:(SimplePokemon) -> Unit) :
     RecyclerView.Adapter<PokemonAdapterViewHolder>() {
+
+    fun appendNewPokemons(newPokemonList : List<SimplePokemon>) {
+        val page = list.size / newPokemonList.size
+        list.addAll(newPokemonList)
+        notifyItemRangeChanged(page * SIMPLE_POKEMONS_PER_PAGE, SIMPLE_POKEMONS_PER_PAGE)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonAdapterViewHolder =
         PokemonAdapterViewHolder(
@@ -34,15 +43,15 @@ class PokemonAdapter(
                 onListItemClick(simplePokemon)
             }
 
-            val capturedPokemonIcon = AppCompatResources.getDrawable(context, R.drawable.pokemon_enable)
-            val notCapturedPokemonIcon = AppCompatResources.getDrawable(context, R.drawable.pokemon_disable)
+            with(holder.ibFavorite) {
+                setImageDrawable(getFavoriteIcon(simplePokemon))
+                setOnClickListener {
+                    simplePokemon.captured = !simplePokemon.captured
+                    setImageDrawable(getFavoriteIcon(simplePokemon))
+                    onCaptureClick(simplePokemon)
+                }
+            }
 
-            holder.ibFavorite.setImageDrawable(
-                if(simplePokemon.captured)
-                    capturedPokemonIcon
-                else
-                    notCapturedPokemonIcon
-            )
 
             Glide.with(context)
                 .load(simplePokemon.imageUrl)
@@ -50,6 +59,13 @@ class PokemonAdapter(
                 .into(holder.ivPokemonImage)
         }
     }
+
+    private fun getFavoriteIcon(pokemon: SimplePokemon) = ContextCompat.getDrawable(
+        context,
+        if (pokemon.captured) R.drawable.pokemon_enable
+        else R.drawable.pokemon_disable
+    )
+
 
     override fun getItemCount(): Int = list.size
 }
