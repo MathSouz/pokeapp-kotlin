@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cwi.matheus.pokeapp.R
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_ID
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_NAME
-import com.cwi.matheus.pokeapp.base.SIMPLE_POKEMONS_PER_PAGE
 import com.cwi.matheus.pokeapp.databinding.ActivityPokemonBinding
 import com.cwi.matheus.pokeapp.domain.entity.SimplePokemon
 import com.cwi.matheus.pokeapp.extension.visibleOrGone
@@ -47,7 +46,7 @@ class PokemonActivity : BaseBottomNavigationActivity() {
 
         val adapter = PokemonAdapter(this@PokemonActivity,
             onListItemClick = { simplePokemon ->  startPokemonDetailActivity(simplePokemon) },
-            onCaptureClick = { simplePokemon ->  viewModel.setCaptured(simplePokemon)}
+            onCaptureClick = { viewModel.setCaptured(this@PokemonActivity, it) }
         )
 
         binding.rvPokemonList.adapter = adapter

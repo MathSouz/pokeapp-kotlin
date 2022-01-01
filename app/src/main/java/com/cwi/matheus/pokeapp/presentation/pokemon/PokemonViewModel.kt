@@ -1,5 +1,7 @@
 package com.cwi.matheus.pokeapp.presentation.pokemon
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +11,7 @@ import com.cwi.matheus.pokeapp.domain.entity.Pokemon
 import com.cwi.matheus.pokeapp.domain.entity.SimplePokemon
 import com.cwi.matheus.pokeapp.domain.repository.PokeApiLocalRepository
 import com.cwi.matheus.pokeapp.domain.repository.PokeApiRepository
+import com.cwi.matheus.pokeapp.extension.capitalize
 import com.cwi.matheus.pokeapp.extension.parseToString
 import com.cwi.matheus.pokeapp.extension.toEntity
 import com.cwi.matheus.pokeapp.presentation.base.BaseViewModel
@@ -33,12 +36,6 @@ class PokemonViewModel(
     private fun updatePokemonCaptureState(simplePokemon: SimplePokemon) : SimplePokemon {
         simplePokemon.captured = (localRepository.getAll().find { it.id == simplePokemon.id } != null)
         return simplePokemon
-    }
-
-    private fun updateCapturedPokemons(capturedIds: List<Int>, pokemonList: List<SimplePokemon>) {
-        capturedIds.forEach { id ->
-            pokemonList.forEach { it.captured = it.id == id }
-        }
     }
 
     fun setCaptured(simplePokemon: SimplePokemon) {
