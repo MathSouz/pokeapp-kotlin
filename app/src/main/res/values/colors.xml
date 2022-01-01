@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="pokemon_red_primary">#EF5350</color>
+    <color name="pokemon_red_darker_primary">#BD3937</color>
+    <color name="pokemon_red_secondary">#FECA1B</color>
+    <color name="pokemon_red_darker_secondary">#CCA111</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
