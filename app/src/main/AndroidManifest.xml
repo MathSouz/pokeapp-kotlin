@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/pokemon_enable"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PokeApp.NoActionBar">
+        android:theme="@style/Theme.PokeApp.NoTitleBar">
         <activity
             android:name=".presentation.pokemonDetail.PokemonDetailActivity"
             android:theme="@style/Theme.PokeApp"
