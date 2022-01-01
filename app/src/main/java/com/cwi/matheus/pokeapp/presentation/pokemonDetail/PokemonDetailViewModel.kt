@@ -30,7 +30,7 @@ class PokemonDetailViewModel(
         }
     }
 
-    fun isPokemonCaptured(pokemon : Pokemon) : Boolean {
+    private fun isPokemonCaptured(pokemon : Pokemon) : Boolean {
         return localRepository.getAll().find { it.id == pokemon.id } != null
     }
 
