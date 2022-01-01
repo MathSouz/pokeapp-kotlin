@@ -41,12 +41,20 @@ class PokemonActivity : BaseBottomNavigationActivity() {
         setupRecyclerView()
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        val adapter = binding.rvPokemonList.adapter as PokemonAdapter
+        adapter.clearList()
+        viewModel.fetchSimplePokemons()
+    }
+
     private fun setupRecyclerView() {
         binding.rvPokemonList.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
 
         val adapter = PokemonAdapter(this@PokemonActivity,
             onListItemClick = { simplePokemon ->  startPokemonDetailActivity(simplePokemon) },
-            onCaptureClick = { viewModel.setCaptured(this@PokemonActivity, it) }
+            onCaptureClick = { viewModel.setCaptured(it) }
         )
 
         binding.rvPokemonList.adapter = adapter

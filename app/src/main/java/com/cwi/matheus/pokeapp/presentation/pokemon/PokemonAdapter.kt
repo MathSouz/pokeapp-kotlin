@@ -32,6 +32,10 @@ class PokemonAdapter(
         notifyItemRangeChanged(page * SIMPLE_POKEMONS_PER_PAGE, SIMPLE_POKEMONS_PER_PAGE)
     }
 
+    fun clearList() {
+        list.clear()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonAdapterViewHolder =
         PokemonAdapterViewHolder(
             LayoutInflater.from(context).inflate(R.layout.item_pokemon, parent, false ))
