@@ -41,7 +41,7 @@ class PokemonDetailViewModel(
         } else {
             viewModelScope.launch {
                 val fetchedPokemon = repository.getPokemonByID(pokemon.id)
-                localRepository.add(fetchedPokemon.toEntity())
+                localRepository.add(fetchedPokemon)
             }
         }
     }

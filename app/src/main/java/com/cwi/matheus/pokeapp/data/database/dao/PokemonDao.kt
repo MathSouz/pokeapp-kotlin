@@ -16,4 +16,7 @@ interface PokemonDao {
 
     @Query("SELECT * FROM PokemonEntity")
     fun getAll(): List<PokemonEntity>
+
+    @Query("SELECT * FROM PokemonEntity LIMIT :limit OFFSET :offset")
+    fun getAll(limit : Int, offset : Int): List<PokemonEntity>
 }
