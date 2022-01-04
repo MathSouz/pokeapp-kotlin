@@ -1,11 +1,7 @@
 package com.cwi.matheus.pokeapp.presentation.pokemonDetail
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.view.get
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.cwi.matheus.pokeapp.R

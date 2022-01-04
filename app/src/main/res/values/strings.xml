@@ -7,4 +7,6 @@
     <string name="txt_set_free">Libertar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_wild_pokemons">Wild Pokemons</string>
+    <string name="txt_my_pokedex">My Pokedex</string>
 </resources>

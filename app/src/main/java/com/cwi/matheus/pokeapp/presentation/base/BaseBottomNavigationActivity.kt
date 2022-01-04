@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.cwi.matheus.pokeapp.R
 import com.cwi.matheus.pokeapp.presentation.pokedex.PokedexActivity
-import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonActivity
+import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonHostActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 abstract class BaseBottomNavigationActivity : AppCompatActivity() {
@@ -28,7 +28,7 @@ abstract class BaseBottomNavigationActivity : AppCompatActivity() {
         getBottomNavigation().setOnItemSelectedListener {
             if (it.itemId != this.tab) when (it.itemId) {
                 R.id.menu_wild_pokemons -> {
-                    val intent = Intent(this, PokemonActivity::class.java)
+                    val intent = Intent(this, PokemonHostActivity::class.java)
                     startActivity(intent)
                 }
                 R.id.menu_pokedex_pokemons -> {
