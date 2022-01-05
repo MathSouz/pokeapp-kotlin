@@ -17,6 +17,16 @@
         tools:listitem="@layout/item_pokedex" />
 
     <include
+        tools:visibility="gone"
+        android:id="@+id/view_pokedex_empty_list"
+        layout="@layout/view_pokedex_empty_list"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_pokedex_list"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <include
         android:id="@+id/view_loading"
         tools:visibility="gone"
         layout="@layout/view_loading" />

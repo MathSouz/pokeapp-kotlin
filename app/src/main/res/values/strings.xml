@@ -5,8 +5,10 @@
     <string name="txt_status">Status</string>
     <string name="txt_capture">Capturar</string>
     <string name="txt_set_free">Libertar</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="txt_wild_pokemons">Wild Pokemons</string>
     <string name="txt_my_pokedex">My Pokedex</string>
+    <string name="txt_set_free_pokemon_dialog_title_text">Realmente deseja libertar %1$s?</string>
+    <string name="txt_pokemon_captured">%1$s capturado!</string>
+    <string name="txt_yes">Sim</string>
+    <string name="txt_no">Não</string>
 </resources>
