@@ -27,9 +27,8 @@ class PokemonAdapter(
     RecyclerView.Adapter<PokemonAdapterViewHolder>() {
 
     fun appendNewPokemons(newPokemonList : List<SimplePokemon>) {
-        val page = list.size / newPokemonList.size
         list.addAll(newPokemonList)
-        notifyItemRangeChanged(page * SIMPLE_POKEMONS_PER_PAGE, SIMPLE_POKEMONS_PER_PAGE)
+        notifyDataSetChanged()
     }
 
     fun clearList() {

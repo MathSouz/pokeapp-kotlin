@@ -16,24 +16,17 @@ import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_ID
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_NAME
 import com.cwi.matheus.pokeapp.databinding.FragmentPokemonListBinding
 import com.cwi.matheus.pokeapp.domain.entity.SimplePokemon
+import com.cwi.matheus.pokeapp.extension.capitalize
 import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonAdapter
 import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonViewModel
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PokemonListFragment : Fragment() {
 
-    private var page = 0
     private lateinit var binding : FragmentPokemonListBinding
 
     private val viewModel : PokemonViewModel by sharedViewModel()
-
-    override fun onResume() {
-        super.onResume()
-
-        val adapter = binding.rvPokemonList.adapter as PokemonAdapter
-        adapter.clearList()
-        viewModel.fetchSimplePokemons()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +49,16 @@ class PokemonListFragment : Fragment() {
 
             val adapter = PokemonAdapter(context,
                 onListItemClick = { simplePokemon ->  navigateToPokemonDetail(simplePokemon) },
-                onCaptureClick = { viewModel.setCaptured(it) }
+                onCaptureClick = {
+                    viewModel.setCaptured(it)
+                    val snackBarText = getString(R.string.txt_pokemon_captured, it.name.capitalize())
+
+                    Snackbar.make(
+                        binding.rvPokemonList,
+                        snackBarText,
+                        Snackbar.LENGTH_LONG)
+                        .show()
+                }
             )
 
             binding.rvPokemonList.adapter = adapter
@@ -69,12 +71,13 @@ class PokemonListFragment : Fragment() {
 
             val scrollListener : RecyclerView.OnScrollListener = object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    val linearLayout = recyclerView.layoutManager as LinearLayoutManager
 
+                    val linearLayout = recyclerView.layoutManager as LinearLayoutManager
                     val lastItemListPosition = linearLayout.findLastCompletelyVisibleItemPosition()
                     val lastItemPosition = recyclerView.adapter?.itemCount?.minus(1)
+
                     if(lastItemListPosition == lastItemPosition) {
-                        viewModel.fetchSimplePokemons(++page)
+                        viewModel.fetchSimplePokemons()
                     }
                 }
             }
