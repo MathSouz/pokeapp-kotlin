@@ -1,5 +1,6 @@
 package com.cwi.matheus.pokeapp.presentation.pokedex
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -8,6 +9,8 @@ import com.cwi.matheus.pokeapp.R
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_ID
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_NAME
 import com.cwi.matheus.pokeapp.databinding.ActivityPokedexBinding
+import com.cwi.matheus.pokeapp.domain.entity.Pokemon
+import com.cwi.matheus.pokeapp.extension.capitalize
 import com.cwi.matheus.pokeapp.extension.visibleOrGone
 import com.cwi.matheus.pokeapp.presentation.base.BaseBottomNavigationActivity
 import com.cwi.matheus.pokeapp.presentation.pokedex.viewModel.PokedexViewModel
@@ -32,17 +35,29 @@ class PokedexActivity : BaseBottomNavigationActivity() {
         binding.rvPokedexList.layoutManager = GridLayoutManager(this, 2)
 
         viewModel.pokedex.observe(this) { list ->
-            binding.rvPokedexList.adapter = PokedexAdapter(this, list, onItemClick = { pokemon ->
-                val intent = Intent(this@PokedexActivity, PokemonDetailActivity::class.java)
-                intent.putExtra(EXTRAS_POKEMON_ID, pokemon.id)
-                intent.putExtra(EXTRAS_POKEMON_NAME, pokemon.name)
-                startActivity(intent)
-            })
+            binding.rvPokedexList.adapter = PokedexAdapter(this, list,
+                onItemClick = { pokemon ->
+                    val intent = Intent(this@PokedexActivity, PokemonDetailActivity::class.java)
+                    intent.putExtra(EXTRAS_POKEMON_ID, pokemon.id)
+                    intent.putExtra(EXTRAS_POKEMON_NAME, pokemon.name)
+                    startActivity(intent) },
+                onConfirmSetFree = { deletedPokemon ->
+                    viewModel.deletePokemonFromPokedex(deletedPokemon)
+                    showFreePokemonMessage(deletedPokemon)
+                })
+
+            binding.viewPokedexEmptyList.root.visibleOrGone(list.isEmpty())
         }
 
         viewModel.loading.observe(this) {
             binding.viewLoading.root.visibleOrGone(it)
         }
+    }
+
+    private fun showFreePokemonMessage(pokemon: Pokemon) {
+        AlertDialog.Builder(this)
+            .setMessage("Você libertou ${pokemon.name.capitalize()}!")
+            .show()
     }
 
     override fun onResume() {

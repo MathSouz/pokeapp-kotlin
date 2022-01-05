@@ -22,4 +22,11 @@ class PokedexViewModel(
             _pokedex.postValue(pokedexList)
         }
     }
+
+    fun deletePokemonFromPokedex(pokemon: Pokemon) {
+        launch {
+            localRepository.remove(pokemon.id)
+            fetchPokedex()
+        }
+    }
 }
