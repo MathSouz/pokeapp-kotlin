@@ -1,6 +1,6 @@
 package com.cwi.matheus.pokeapp.base
 
-const val SIMPLE_POKEMONS_PER_PAGE : Int = 10
+const val SIMPLE_POKEMONS_PER_PAGE : Int = 9
 const val POKEDEX_PAGE : Int = 10
 
 const val EXTRAS_POKEMON_ID = "EXTRAS_POKEMON_ID"
