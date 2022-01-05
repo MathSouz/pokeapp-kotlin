@@ -1,6 +1,7 @@
 package com.cwi.matheus.pokeapp.presentation.pokemon
 
 import android.content.Context
+import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -42,7 +43,6 @@ class PokemonAdapter(
                     onCaptureClick(simplePokemon)
                 }
             }
-
 
             Glide.with(context)
                 .load(simplePokemon.imageUrl)

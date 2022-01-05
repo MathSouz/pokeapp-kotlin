@@ -13,5 +13,6 @@
     <string name="txt_yes">Sim</string>
     <string name="txt_no">Não</string>
     <string name="txt_loading">Carregando…</string>
-    <string name="txt_no_pokemon_on_pokedex">Ops! Parece que você não capturou nenhum pokemon :(</string>
+    <string name="txt_no_pokemon_on_pokedex">Ops!\nParece que você não capturou nenhum pokemon :(</string>
+    <string name="txt_err">Ops... parece que aconteceu um erro...</string>
 </resources>

@@ -21,12 +21,13 @@
                 android:layout_width="128dp"
                 android:layout_height="128dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/circle"
-                android:backgroundTint="@color/transparent_black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_pest_control_rodent_24" />
+                app:srcCompat="@drawable/ic_baseline_pest_control_rodent_24"
+                android:background="@drawable/circle"
+                android:backgroundTint="@color/transparent_black"
+                />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_pokemon_name"
