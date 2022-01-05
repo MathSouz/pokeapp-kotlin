@@ -34,13 +34,14 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/ib_favorite"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:background="@android:color/transparent"
         android:scaleType="centerInside"
         android:src="@drawable/pokemon_enable"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

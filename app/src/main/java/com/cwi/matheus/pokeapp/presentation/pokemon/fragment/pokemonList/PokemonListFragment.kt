@@ -51,7 +51,12 @@ class PokemonListFragment : Fragment() {
                 onListItemClick = { simplePokemon ->  navigateToPokemonDetail(simplePokemon) },
                 onCaptureClick = {
                     viewModel.setCaptured(it)
-                    val snackBarText = getString(R.string.txt_pokemon_captured, it.name.capitalize())
+
+                    val snackBarText =
+                        if(it.captured)
+                            getString(R.string.txt_pokemon_captured, it.name.capitalize())
+                        else
+                            getString(R.string.txt_pokemon_free, it.name.capitalize())
 
                     Snackbar.make(
                         binding.rvPokemonList,

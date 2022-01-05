@@ -2,7 +2,6 @@ package com.cwi.matheus.pokeapp.data.network.mapper
 
 import com.cwi.matheus.pokeapp.data.network.entity.SimplePokemonResponse
 import com.cwi.matheus.pokeapp.domain.entity.SimplePokemon
-import java.net.URI
 
 class SimplePokemonMapper : DomainMapper<SimplePokemonResponse, SimplePokemon> {
     override fun toDomain(from: SimplePokemonResponse): SimplePokemon {

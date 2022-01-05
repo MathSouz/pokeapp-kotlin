@@ -2,19 +2,11 @@ package com.cwi.matheus.pokeapp.presentation.pokemon
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.appcompat.widget.AppCompatImageButton
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.util.StringUtil
 import com.bumptech.glide.Glide
 import com.cwi.matheus.pokeapp.R
-import com.cwi.matheus.pokeapp.base.SIMPLE_POKEMONS_PER_PAGE
-import com.cwi.matheus.pokeapp.databinding.ItemPokemonBinding
 import com.cwi.matheus.pokeapp.domain.entity.SimplePokemon
 import com.cwi.matheus.pokeapp.extension.capitalize
 import com.cwi.matheus.pokeapp.presentation.pokemon.viewHolder.PokemonAdapterViewHolder
@@ -29,10 +21,6 @@ class PokemonAdapter(
     fun appendNewPokemons(newPokemonList : List<SimplePokemon>) {
         list.addAll(newPokemonList)
         notifyDataSetChanged()
-    }
-
-    fun clearList() {
-        list.clear()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonAdapterViewHolder =

@@ -3,7 +3,6 @@ package com.cwi.matheus.pokeapp.data.network
 import com.cwi.matheus.pokeapp.base.SIMPLE_POKEMONS_PER_PAGE
 import com.cwi.matheus.pokeapp.data.network.entity.PokemonListResponse
 import com.cwi.matheus.pokeapp.data.network.entity.PokemonResponse
-import com.cwi.matheus.pokeapp.data.network.entity.SimplePokemonResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

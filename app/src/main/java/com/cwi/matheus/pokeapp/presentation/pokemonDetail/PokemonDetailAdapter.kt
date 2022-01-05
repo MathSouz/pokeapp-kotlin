@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cwi.matheus.pokeapp.R
 import com.cwi.matheus.pokeapp.domain.entity.PokemonStat
-import com.cwi.matheus.pokeapp.presentation.pokemon.viewHolder.PokemonAdapterViewHolder
 import com.cwi.matheus.pokeapp.presentation.pokemonDetail.viewHolder.PokemonDetailAdapterViewHolder
 
 class PokemonDetailAdapter(

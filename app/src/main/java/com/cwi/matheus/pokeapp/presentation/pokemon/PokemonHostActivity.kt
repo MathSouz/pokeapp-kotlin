@@ -1,8 +1,6 @@
 package com.cwi.matheus.pokeapp.presentation.pokemon
 
 import android.os.Bundle
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import com.cwi.matheus.pokeapp.R
 import com.cwi.matheus.pokeapp.databinding.ActivityPokemonHostBinding
 import com.cwi.matheus.pokeapp.extension.visibleOrGone
