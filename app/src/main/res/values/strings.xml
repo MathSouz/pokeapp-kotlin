@@ -15,4 +15,5 @@
     <string name="txt_loading">Carregando…</string>
     <string name="txt_no_pokemon_on_pokedex">Ops!\nParece que você não capturou nenhum pokemon :(</string>
     <string name="txt_err">Ops... parece que aconteceu um erro...</string>
+    <string name="txt_try_again">Tentar novamente</string>
 </resources>

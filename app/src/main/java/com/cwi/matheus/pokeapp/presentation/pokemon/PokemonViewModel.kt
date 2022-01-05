@@ -19,13 +19,13 @@ class PokemonViewModel(
 
     private var page = 0
 
-    fun fetchSimplePokemons() {
+    fun fetchSimplePokemons(nextPage : Boolean) {
         launch {
             val pokemonList = repository.getPokemonList(page).map { updatePokemonCaptureState(it) }
             _data.postValue(pokemonList)
         }
 
-        page++
+        if(nextPage) page++
     }
     
     private fun updatePokemonCaptureState(simplePokemon: SimplePokemon) : SimplePokemon {

@@ -17,6 +17,7 @@ import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_NAME
 import com.cwi.matheus.pokeapp.databinding.FragmentPokemonListBinding
 import com.cwi.matheus.pokeapp.domain.entity.SimplePokemon
 import com.cwi.matheus.pokeapp.extension.capitalize
+import com.cwi.matheus.pokeapp.extension.visibleOrGone
 import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonAdapter
 import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -38,43 +39,56 @@ class PokemonListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.fetchSimplePokemons()
+        viewModel.fetchSimplePokemons(false)
         setupRecyclerView()
+
+        viewModel.error.observe(viewLifecycleOwner) {
+            binding.viewError.root.visibleOrGone(it)
+
+            if(it) {
+                binding.viewError.bTryAgain.setOnClickListener {
+                    viewModel.fetchSimplePokemons(false)
+                }
+            }
+        }
+    }
+
+    private fun onCaptureClick( simplePokemon: SimplePokemon ) {
+        viewModel.setCaptured(simplePokemon)
+
+        val snackBarText =
+            if(simplePokemon.captured)
+                getString(R.string.txt_pokemon_captured, simplePokemon.name.capitalize())
+            else
+                getString(R.string.txt_pokemon_free, simplePokemon.name.capitalize())
+
+        Snackbar.make(binding.rvPokemonList, snackBarText, Snackbar.LENGTH_SHORT).show()
     }
 
     private fun setupRecyclerView() {
 
         context?.let { context ->
-            binding.rvPokemonList.addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
+            binding.rvPokemonList
+                .addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
 
             val adapter = PokemonAdapter(context,
                 onListItemClick = { simplePokemon ->  navigateToPokemonDetail(simplePokemon) },
-                onCaptureClick = {
-                    viewModel.setCaptured(it)
-
-                    val snackBarText =
-                        if(it.captured)
-                            getString(R.string.txt_pokemon_captured, it.name.capitalize())
-                        else
-                            getString(R.string.txt_pokemon_free, it.name.capitalize())
-
-                    Snackbar.make(
-                        binding.rvPokemonList,
-                        snackBarText,
-                        Snackbar.LENGTH_LONG)
-                        .show()
-                }
+                onCaptureClick = { onCaptureClick(it) }
             )
 
             binding.rvPokemonList.adapter = adapter
 
-            viewModel.data.observe(viewLifecycleOwner) {
-                adapter.appendNewPokemons(it)
-            }
+            viewModel.data.observe(viewLifecycleOwner) { adapter.appendNewPokemons(it) }
 
             binding.rvPokemonList.layoutManager = LinearLayoutManager(context)
 
-            val scrollListener : RecyclerView.OnScrollListener = object : RecyclerView.OnScrollListener() {
+            setupScrollListener()
+        }
+    }
+
+    private fun setupScrollListener() {
+        val scrollListener : RecyclerView.OnScrollListener =
+            object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
 
                     val linearLayout = recyclerView.layoutManager as LinearLayoutManager
@@ -82,14 +96,13 @@ class PokemonListFragment : Fragment() {
                     val lastItemPosition = recyclerView.adapter?.itemCount?.minus(1)
 
                     if(lastItemListPosition == lastItemPosition) {
-                        viewModel.fetchSimplePokemons()
+                        viewModel.fetchSimplePokemons(true)
                     }
                 }
-            }
-
-            binding.rvPokemonList.removeOnScrollListener(scrollListener)
-            binding.rvPokemonList.addOnScrollListener(scrollListener)
         }
+
+        binding.rvPokemonList.removeOnScrollListener(scrollListener)
+        binding.rvPokemonList.addOnScrollListener(scrollListener)
     }
 
     private fun navigateToPokemonDetail(simplePokemon: SimplePokemon) {

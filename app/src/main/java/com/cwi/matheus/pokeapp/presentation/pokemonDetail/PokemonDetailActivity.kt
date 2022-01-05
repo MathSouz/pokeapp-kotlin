@@ -34,6 +34,16 @@ class PokemonDetailActivity : AppCompatActivity() {
             binding.tvPokemonName.text = capitalizedPokemonName
             viewModel.fetchPokemonDetail(pokemonId)
             supportActionBar?.title = capitalizedPokemonName
+
+            viewModel.error.observe(this) { error ->
+                binding.viewError.root.visibleOrGone(error)
+
+                if(error) {
+                    binding.viewError.bTryAgain.setOnClickListener {
+                        viewModel.fetchPokemonDetail(pokemonId)
+                    }
+                }
+            }
         }
 
         viewModel.loading.observe(this) {

@@ -44,6 +44,16 @@ class PokemonDetailFragment : Fragment() {
                 binding.tvPokemonId.text = pokemonId.toString()
                 binding.tvPokemonName.text = capitalizedPokemonName
                 viewModel.fetchPokemonDetail(pokemonId)
+
+                viewModel.error.observe(viewLifecycleOwner) {
+                    binding.viewError.root.visibleOrGone(it)
+
+                    if(it) {
+                        binding.viewError.bTryAgain.setOnClickListener {
+                            viewModel.fetchPokemonDetail(pokemonId)
+                        }
+                    }
+                }
             }
 
             viewModel.loading.observe(viewLifecycleOwner) {
