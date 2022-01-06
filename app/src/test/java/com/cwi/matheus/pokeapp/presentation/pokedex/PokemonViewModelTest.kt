@@ -7,11 +7,9 @@ import com.cwi.matheus.pokeapp.domain.entity.SimplePokemon
 import com.cwi.matheus.pokeapp.domain.entity.Stat
 import com.cwi.matheus.pokeapp.domain.repository.PokeApiLocalRepository
 import com.cwi.matheus.pokeapp.domain.repository.PokeApiRepository
+import com.cwi.matheus.pokeapp.extension.test
 import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonViewModel
-import io.mockk.coEvery
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.verify
+import io.mockk.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
@@ -41,6 +39,24 @@ class PokemonViewModelTest {
     fun setup() {
         Dispatchers.setMain(dispatcher)
         viewModel = PokemonViewModel(pokeApiRepository, pokeApiLocalRepository)
+    }
+
+    @Test
+    fun whenFetchWithNextPageFlag_thenFetchPokemonsPaging() {
+
+        val viewObserver = viewModel.data.test()
+
+        val simplePokemonList = listOf(
+            SimplePokemon(0, "Pikachu", "pikachu.png", true)
+        )
+
+        every { pokeApiLocalRepository.getAll() } returns emptyList()
+        coEvery { pokeApiRepository.getPokemonList(0) } returns simplePokemonList
+
+        viewModel.fetchSimplePokemons(true)
+
+        verify { viewObserver.onChanged(any()) }
+        coVerify { pokeApiRepository.getPokemonList(0) }
     }
 
     @Test
