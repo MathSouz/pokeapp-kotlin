@@ -54,7 +54,7 @@ class PokemonListFragment : Fragment() {
     }
 
     private fun onCaptureClick( simplePokemon: SimplePokemon ) {
-        viewModel.setCaptured(simplePokemon)
+        viewModel.updateLocalRepositoryFromPokemonCaptureState(simplePokemon)
 
         val snackBarText =
             if(simplePokemon.captured)

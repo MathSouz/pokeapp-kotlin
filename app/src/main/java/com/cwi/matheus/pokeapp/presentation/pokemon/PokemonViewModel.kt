@@ -33,7 +33,7 @@ class PokemonViewModel(
         return simplePokemon
     }
 
-    fun setCaptured(simplePokemon: SimplePokemon) {
+    fun updateLocalRepositoryFromPokemonCaptureState(simplePokemon: SimplePokemon) {
 
         if(!simplePokemon.captured) {
             localRepository.remove(simplePokemon.id)
