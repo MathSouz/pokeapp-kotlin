@@ -14,6 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PokeApp.NoTitleBar">
         <activity
+            android:name=".presentation.about.AboutActivity"
+            android:exported="false"
+            android:label="@string/txt_about"
+            android:theme="@style/Theme.PokeApp" />
+        <activity
             android:name=".presentation.pokemon.PokemonHostActivity"
             android:exported="true">
             <intent-filter>

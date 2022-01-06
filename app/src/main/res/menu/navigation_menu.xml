@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/menu_wild_pokemons"
         android:title="@string/txt_wild_pokemons"
@@ -9,4 +10,9 @@
         android:id="@+id/menu_pokedex_pokemons"
         android:title="@string/txt_my_pokedex"
         android:icon="@drawable/ic_baseline_amp_stories_24"/>
+
+    <item
+        android:id="@+id/menu_about"
+        android:title="@string/txt_about"
+        android:icon="@drawable/ic_baseline_info_24"/>
 </menu>
