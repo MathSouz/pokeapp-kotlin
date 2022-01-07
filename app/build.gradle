@@ -49,6 +49,8 @@ ext {
     mockk_version = "1.11.0"
     coroutine_version = "1.4.2"
     arch_version = "2.1.0"
+    google_play_services = "19.0.1"
+    biometric = "1.2.0-alpha04"
 }
 
 dependencies {
@@ -61,8 +63,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
 
     // Android Test
     testImplementation 'junit:junit:'
@@ -98,5 +100,14 @@ dependencies {
 
     //Coroutines Test
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_version")
+
+    // Google Play Services
+    implementation "com.google.android.gms:play-services-location:$google_play_services"
+
+    // Fused location
+    implementation "com.google.android.gms:play-services-location:$google_play_services"
+
+    // Biometric
+    implementation "androidx.biometric:biometric-ktx:$biometric"
 
 }
