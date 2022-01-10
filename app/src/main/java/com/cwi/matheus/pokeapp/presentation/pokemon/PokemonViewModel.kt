@@ -19,23 +19,28 @@ class PokemonViewModel(
 
     private var page = 0
 
-    fun fetchSimplePokemons(nextPage : Boolean) {
+    fun fetchSimplePokemons(nextPage: Boolean) {
         launch {
             val pokemonList = repository.getPokemonList(page).map { updatePokemonCaptureState(it) }
-            _data.postValue(pokemonList)
-        }
 
-        if(nextPage) page++
+            _data.value?.let { simplePokemonList ->
+                _data.postValue(simplePokemonList + pokemonList)
+            } ?: run {
+                _data.postValue(pokemonList)
+            }
+            if (nextPage) page++
+        }
     }
-    
-    private fun updatePokemonCaptureState(simplePokemon: SimplePokemon) : SimplePokemon {
-        simplePokemon.captured = (localRepository.getAll().find { it.id == simplePokemon.id } != null)
+
+    private fun updatePokemonCaptureState(simplePokemon: SimplePokemon): SimplePokemon {
+        simplePokemon.captured =
+            (localRepository.getAll().find { it.id == simplePokemon.id } != null)
         return simplePokemon
     }
 
     fun updateLocalRepositoryFromPokemonCaptureState(simplePokemon: SimplePokemon) {
 
-        if(!simplePokemon.captured) {
+        if (!simplePokemon.captured) {
             localRepository.remove(simplePokemon.id)
         } else {
             viewModelScope.launch {

@@ -30,9 +30,9 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PokemonListFragment : Fragment() {
 
-    private lateinit var binding : FragmentPokemonListBinding
+    private lateinit var binding: FragmentPokemonListBinding
 
-    private val viewModel : PokemonViewModel by sharedViewModel()
+    private val viewModel: PokemonViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,15 +42,19 @@ class PokemonListFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.fetchSimplePokemons(false)
+        viewModel.fetchSimplePokemons(true)
         setupRecyclerView()
 
         viewModel.error.observe(viewLifecycleOwner) {
             binding.viewError.root.visibleOrGone(it)
 
-            if(it) {
+            if (it) {
                 binding.viewError.bTryAgain.setOnClickListener {
                     viewModel.fetchSimplePokemons(false)
                 }
@@ -58,11 +62,11 @@ class PokemonListFragment : Fragment() {
         }
     }
 
-    private fun onCaptureClick( simplePokemon: SimplePokemon ) {
+    private fun onCaptureClick(simplePokemon: SimplePokemon) {
         viewModel.updateLocalRepositoryFromPokemonCaptureState(simplePokemon)
 
         val snackBarText =
-            if(simplePokemon.captured)
+            if (simplePokemon.captured)
                 getString(R.string.txt_pokemon_captured, simplePokemon.name.capitalize())
             else
                 getString(R.string.txt_pokemon_free, simplePokemon.name.capitalize())
@@ -77,7 +81,7 @@ class PokemonListFragment : Fragment() {
                 .addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
 
             val adapter = PokemonAdapter(context,
-                onListItemClick = { simplePokemon ->  navigateToPokemonDetail(simplePokemon) },
+                onListItemClick = { simplePokemon -> navigateToPokemonDetail(simplePokemon) },
                 onCaptureClick = { onCaptureClick(it) }
             )
 
@@ -92,7 +96,7 @@ class PokemonListFragment : Fragment() {
     }
 
     private fun setupScrollListener() {
-        val scrollListener : RecyclerView.OnScrollListener =
+        val scrollListener: RecyclerView.OnScrollListener =
             object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
 
@@ -100,11 +104,11 @@ class PokemonListFragment : Fragment() {
                     val lastItemListPosition = linearLayout.findLastCompletelyVisibleItemPosition()
                     val lastItemPosition = recyclerView.adapter?.itemCount?.minus(1)
 
-                    if(lastItemListPosition == lastItemPosition) {
+                    if (lastItemListPosition == lastItemPosition) {
                         viewModel.fetchSimplePokemons(true)
                     }
                 }
-        }
+            }
 
         binding.rvPokemonList.removeOnScrollListener(scrollListener)
         binding.rvPokemonList.addOnScrollListener(scrollListener)

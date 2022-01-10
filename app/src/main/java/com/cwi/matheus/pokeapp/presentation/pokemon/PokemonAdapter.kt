@@ -14,13 +14,13 @@ import com.cwi.matheus.pokeapp.presentation.pokemon.viewHolder.PokemonAdapterVie
 
 class PokemonAdapter(
     private val context : Context,
-    var list : MutableList<SimplePokemon> = mutableListOf(),
+    var list : List<SimplePokemon> = listOf(),
     private val onListItemClick : (SimplePokemon) -> Unit,
     private val onCaptureClick:(SimplePokemon) -> Unit) :
     RecyclerView.Adapter<PokemonAdapterViewHolder>() {
 
     fun appendNewPokemons(newPokemonList : List<SimplePokemon>) {
-        list.addAll(newPokemonList)
+        list = newPokemonList
         notifyDataSetChanged()
     }
 
