@@ -3,14 +3,11 @@ package com.cwi.matheus.pokeapp.presentation.about
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.widget.CompoundButton
-import androidx.biometric.BiometricManager
 import com.cwi.matheus.pokeapp.R
-import com.cwi.matheus.pokeapp.base.AUTH_SHARED_PREFERENCES
-import com.cwi.matheus.pokeapp.base.SHARED_PREFERENCE_BIOMETRIC_NEEDED
 import com.cwi.matheus.pokeapp.base.SharedPreferencesManager
 import com.cwi.matheus.pokeapp.databinding.ActivityAboutBinding
 import com.cwi.matheus.pokeapp.presentation.base.BaseBottomNavigationActivity
-import com.cwi.matheus.pokeapp.service.BiometryService
+import com.cwi.matheus.pokeapp.service.BiometryUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AboutActivity : BaseBottomNavigationActivity() {
@@ -36,7 +33,7 @@ class AboutActivity : BaseBottomNavigationActivity() {
 
     private fun setupBiometricAuthSwitch() {
         val sharedPreferencesManager = SharedPreferencesManager(this)
-        val biometryService = BiometryService(this)
+        val biometryService = BiometryUtils(this)
 
         val onCheckListener = CompoundButton.OnCheckedChangeListener { _, checked ->
             sharedPreferencesManager.setBiometryNeedPreference(checked)
