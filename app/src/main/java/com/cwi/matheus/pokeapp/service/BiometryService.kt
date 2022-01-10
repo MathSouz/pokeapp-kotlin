@@ -1,24 +1,22 @@
 package com.cwi.matheus.pokeapp.service
 
-import android.content.Intent
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import com.cwi.matheus.pokeapp.R
 import com.cwi.matheus.pokeapp.base.SharedPreferencesManager
-import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonHostActivity
-import com.cwi.matheus.pokeapp.presentation.start.StartActivity
 
 class BiometryService(
-    private val startActivity: AppCompatActivity,
+    private val activity: AppCompatActivity,
     private val onAuthenticationSuccess : () -> Unit,
     private val onAuthenticationFail : () -> Unit,
     private val onAuthenticationNotNeeded : () -> Unit) {
 
     fun callBiometricAuth() {
-        val sharedPreferencesManager = SharedPreferencesManager(startActivity)
+        val sharedPreferencesManager = SharedPreferencesManager(activity)
 
         if(sharedPreferencesManager.isBiometryNeed()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -32,14 +30,14 @@ class BiometryService(
     @RequiresApi(Build.VERSION_CODES.R)
     private fun showBiometricPrompt() {
 
-        val executor = ContextCompat.getMainExecutor(startActivity)
-        val biometricAuthenticationText = startActivity
+        val executor = ContextCompat.getMainExecutor(activity)
+        val biometricAuthenticationText = activity
             .getString(R.string.txt_biometric_authentication)
-        val biometryAlertText = startActivity.getString(R.string.txt_biometry_alert)
-        val cancel = startActivity.getString(R.string.txt_cancel)
+        val biometryAlertText = activity.getString(R.string.txt_biometry_alert)
+        val cancel = activity.getString(R.string.txt_cancel)
 
         val biometricPrompt = BiometricPrompt(
-            startActivity,
+            activity,
             executor,
             object : BiometricPrompt.AuthenticationCallback() {
             override fun onAuthenticationError(errorCode: Int,
@@ -70,6 +68,4 @@ class BiometryService(
     private fun onBiometricAuthenticationSuccess() {
         onAuthenticationSuccess()
     }
-
-
 }
