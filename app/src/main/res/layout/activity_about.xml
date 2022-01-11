@@ -22,8 +22,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:text="Exigir autenticação ao iniciar o app"
+                android:text="@string/txt_option_auth"
                 app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="8dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_dark_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="@string/txt_option_dark_mode"
+                app:layout_constraintTop_toBottomOf="@id/switch_auth"
                 tools:layout_editor_absoluteX="8dp" />
 
             <TextView
@@ -35,7 +44,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch_auth" />
+                app:layout_constraintTop_toBottomOf="@+id/switch_dark_mode" />
 
             <TextView
                 android:id="@+id/tv_owner_name"

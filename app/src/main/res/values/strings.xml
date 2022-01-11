@@ -35,4 +35,6 @@
     <string name="txt_biometry_alert">Você definiu que a aplicação precisa de autenticação biométrica</string>
     <string name="txt_cancel">Cancelar</string>
     <string name="txt_biometric_authentication">Autenticação biométrica</string>
+    <string name="txt_option_auth">Exigir autenticação ao iniciar o app</string>
+    <string name="txt_option_dark_mode">Modo escuro (Reinicialização necessária)</string>
 </resources>
