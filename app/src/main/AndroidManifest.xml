@@ -24,8 +24,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.about.AboutActivity"
-            android:label="@string/txt_about" />
+            android:name=".presentation.preferences.PreferencesActivity"
+            android:label="@string/txt_preferences" />
         <activity
             android:name=".presentation.pokemon.PokemonHostActivity">
         </activity>

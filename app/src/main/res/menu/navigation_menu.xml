@@ -12,7 +12,7 @@
         android:icon="@drawable/ic_baseline_amp_stories_24"/>
 
     <item
-        android:id="@+id/menu_about"
-        android:title="@string/txt_about"
+        android:id="@+id/menu_preferences"
+        android:title="@string/txt_preferences"
         android:icon="@drawable/ic_baseline_info_24"/>
 </menu>

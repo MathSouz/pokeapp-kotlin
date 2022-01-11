@@ -16,7 +16,7 @@
     <string name="txt_no_pokemon_on_pokedex">Ops!\nParece que você não capturou nenhum pokemon :(</string>
     <string name="txt_err">Ops… parece que aconteceu um erro…</string>
     <string name="txt_try_again">Tentar novamente</string>
-    <string name="txt_about">Sobre</string>
+    <string name="txt_preferences">Preferências</string>
     <string name="txt_uses_pokeapi">Essa aplicação utiliza o <a href="https://pokeapi.co/">PokeApi</a>.</string>
     <string name="txt_2022">2022</string>
     <string name="txt_techs">Também é utilizado Android X, Koin, Retrofit, Moshi, Glide, Room, Mockk</string>

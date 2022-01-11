@@ -3,7 +3,7 @@ package com.cwi.matheus.pokeapp.presentation.base
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.cwi.matheus.pokeapp.R
-import com.cwi.matheus.pokeapp.presentation.about.AboutActivity
+import com.cwi.matheus.pokeapp.presentation.preferences.PreferencesActivity
 import com.cwi.matheus.pokeapp.presentation.pokedex.PokedexActivity
 import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonHostActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -36,8 +36,8 @@ abstract class BaseBottomNavigationActivity : AppCompatActivity() {
                     val intent = Intent(this, PokedexActivity::class.java)
                     startActivity(intent)
                 }
-                R.id.menu_about -> {
-                    val intent = Intent(this, AboutActivity::class.java)
+                R.id.menu_preferences -> {
+                    val intent = Intent(this, PreferencesActivity::class.java)
                     startActivity(intent)
                 }
             }

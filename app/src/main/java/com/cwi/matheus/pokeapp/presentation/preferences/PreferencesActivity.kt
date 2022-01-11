@@ -1,20 +1,19 @@
-package com.cwi.matheus.pokeapp.presentation.about
+package com.cwi.matheus.pokeapp.presentation.preferences
 
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.widget.CompoundButton
-import androidx.appcompat.app.AppCompatDelegate
 import com.cwi.matheus.pokeapp.R
 import com.cwi.matheus.pokeapp.base.SharedPreferencesManager
-import com.cwi.matheus.pokeapp.databinding.ActivityAboutBinding
+import com.cwi.matheus.pokeapp.databinding.ActivityPreferencesBinding
 import com.cwi.matheus.pokeapp.presentation.base.BaseBottomNavigationActivity
 import com.cwi.matheus.pokeapp.service.BiometryUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class AboutActivity : BaseBottomNavigationActivity() {
+class PreferencesActivity : BaseBottomNavigationActivity() {
 
-    private lateinit var binding: ActivityAboutBinding
-    override val tab: Int = R.id.menu_about
+    private lateinit var binding: ActivityPreferencesBinding
+    override val tab: Int = R.id.menu_preferences
     private lateinit var sharedPreferencesManager : SharedPreferencesManager
 
     override fun getBottomNavigation(): BottomNavigationView =
@@ -23,7 +22,7 @@ class AboutActivity : BaseBottomNavigationActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityAboutBinding.inflate(layoutInflater)
+        binding = ActivityPreferencesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.tvPokeapi.movementMethod = LinkMovementMethod.getInstance()
