@@ -33,7 +33,6 @@ class AboutActivity : BaseBottomNavigationActivity() {
 
     private fun setupBiometricAuthSwitch() {
         val sharedPreferencesManager = SharedPreferencesManager(this)
-        val biometryService = BiometryUtils(this)
 
         val onCheckListener = CompoundButton.OnCheckedChangeListener { _, checked ->
             sharedPreferencesManager.setBiometryNeedPreference(checked)
@@ -41,7 +40,7 @@ class AboutActivity : BaseBottomNavigationActivity() {
 
         binding.switchAuth.isChecked = sharedPreferencesManager.isBiometryNeed()
 
-        if(biometryService.existsBiometryService()) {
+        if(BiometryUtils.existsBiometryService(this)) {
             binding.switchAuth.isEnabled = true
             binding.switchAuth.setOnCheckedChangeListener(onCheckListener)
         } else {

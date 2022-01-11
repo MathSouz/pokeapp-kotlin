@@ -16,7 +16,7 @@ class PokemonEntityMapper : DomainMapper<PokemonEntity, Pokemon> {
             height = from.height,
             weight = from.weight,
             imageUrl = from.imageUrl,
-            stats = pokemonStatMapper.fromStringToDomainList(from.stats)
+            stats = from.stats
         )
 
     override fun toDomain(from: List<PokemonEntity>): List<Pokemon> =

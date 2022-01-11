@@ -16,7 +16,7 @@ class PokemonMapper : DomainMapper<PokemonResponse, Pokemon>{
             height = from.height,
             weight = from.weight,
             imageUrl = from.imageUrl,
-            stats = from.stats.parseToString()
+            stats = from.stats
         )
 
     override fun toDomain(from: PokemonResponse): Pokemon {
