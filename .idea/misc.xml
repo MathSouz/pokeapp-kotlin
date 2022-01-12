@@ -11,6 +11,7 @@
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/activity_pokemon.xml" value="0.136" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/activity_pokemon_detail.xml" value="0.264" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/activity_pokemon_host.xml" value="0.259375" />
+        <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/activity_preferences.xml" value="0.259375" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/activity_start.xml" value="0.259375" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/bottom_navigation.xml" value="0.259375" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/fragment_about.xml" value="0.259375" />
@@ -22,6 +23,7 @@
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/item_pokemon.xml" value="0.4" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/item_pokemon_stat.xml" value="0.6" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/view_bottom_navigation.xml" value="0.259375" />
+        <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/view_divider.xml" value="0.259375" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/view_error.xml" value="0.264" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/view_loading.xml" value="0.259375" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/view_pokedex_empty_list.xml" value="0.264" />
