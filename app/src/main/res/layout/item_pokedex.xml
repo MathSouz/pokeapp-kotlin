@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="?attr/colorOnPrimary"
+    app:cardBackgroundColor="?attr/colorPrimary"
     android:foreground="?attr/selectableItemBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,22 +15,19 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_pokemon_image"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_pokemon_name"
             tools:srcCompat="@drawable/ic_baseline_pest_control_rodent_24"
-            android:background="@drawable/circle"
-            android:backgroundTint="@color/transparent_black"/>
+            android:background="@color/transparent_black" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_pokemon_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorOnPrimary"
             android:padding="8dp"
-            android:textSize="18sp"
             android:textColor="?attr/colorSecondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
