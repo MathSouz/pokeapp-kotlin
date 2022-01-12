@@ -5,7 +5,6 @@ import com.cwi.matheus.pokeapp.data.network.entity.PokemonResponse
 import com.cwi.matheus.pokeapp.domain.entity.Pokemon
 import com.cwi.matheus.pokeapp.domain.entity.PokemonStat
 import com.cwi.matheus.pokeapp.domain.entity.Stat
-import com.cwi.matheus.pokeapp.extension.parseToString
 
 class PokemonMapper : DomainMapper<PokemonResponse, Pokemon>{
 
@@ -27,13 +26,17 @@ class PokemonMapper : DomainMapper<PokemonResponse, Pokemon>{
             name = from.name,
             height = from.height,
             weight = from.weight,
-            imageUrl = parsePokemonIDToArtworkURL(from.id),
+            imageUrl = getArtworkUrlByPokemonId(from.id),
             stats = statList)
     }
 
 
     override fun toDomain(from: List<PokemonResponse>): List<Pokemon> = from.map { toDomain(it) }
 
-    private fun parsePokemonIDToArtworkURL(id : Int) : String =
+    /**
+     * Estou buscando a imagem do pokemon desta forma por que a API não entrega a URL pelo endpoint,
+     * no caso, eu teria que fazer duas requisições diferentes apenas para buscar a imagem.
+     */
+    private fun getArtworkUrlByPokemonId(id : Int) : String =
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png"
 }
