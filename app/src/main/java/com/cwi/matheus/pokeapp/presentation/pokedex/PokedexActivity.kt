@@ -15,6 +15,7 @@ import com.cwi.matheus.pokeapp.presentation.base.BaseBottomNavigationActivity
 import com.cwi.matheus.pokeapp.presentation.pokedex.viewModel.PokedexViewModel
 import com.cwi.matheus.pokeapp.presentation.pokemonDetail.PokemonDetailActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokedexActivity : BaseBottomNavigationActivity() {
@@ -54,9 +55,9 @@ class PokedexActivity : BaseBottomNavigationActivity() {
     }
 
     private fun showFreePokemonMessage(pokemon: Pokemon) {
-        AlertDialog.Builder(this)
-            .setMessage("Você libertou ${pokemon.name.capitalize()}!")
-            .show()
+        val alertMessage = getString(R.string.txt_pokemon_free, pokemon.name.capitalize())
+
+        Snackbar.make(binding.rvPokedexList, alertMessage, Snackbar.LENGTH_LONG).show()
     }
 
     override fun onResume() {
