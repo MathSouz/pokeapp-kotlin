@@ -25,4 +25,11 @@ class PokedexViewModel(
             fetchPokedex()
         }
     }
+
+    fun addPokemonToPokedex(pokemon: Pokemon) {
+        launch {
+            localRepository.add(pokemon)
+            fetchPokedex()
+        }
+    }
 }

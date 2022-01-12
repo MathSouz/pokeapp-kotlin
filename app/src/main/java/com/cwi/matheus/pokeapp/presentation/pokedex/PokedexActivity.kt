@@ -1,6 +1,5 @@
 package com.cwi.matheus.pokeapp.presentation.pokedex
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -54,10 +53,14 @@ class PokedexActivity : BaseBottomNavigationActivity() {
         }
     }
 
-    private fun showFreePokemonMessage(pokemon: Pokemon) {
-        val alertMessage = getString(R.string.txt_pokemon_free, pokemon.name.capitalize())
+    private fun showFreePokemonMessage(deletedPokemon: Pokemon) {
+        val alertMessage = getString(R.string.txt_pokemon_free, deletedPokemon.name.capitalize())
 
-        Snackbar.make(binding.rvPokedexList, alertMessage, Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.rvPokedexList, alertMessage, Snackbar.LENGTH_LONG)
+            .setAction(R.string.txt_undo) {
+                viewModel.addPokemonToPokedex(deletedPokemon)
+            }
+            .show()
     }
 
     override fun onResume() {

@@ -38,4 +38,5 @@
     <string name="txt_option_dark_mode">Modo escuro (Reinicialização necessária)</string>
     <string name="txt_options">Opções</string>
     <string name="txt_about">Sobre</string>
+    <string name="txt_undo">Desfazer</string>
 </resources>
