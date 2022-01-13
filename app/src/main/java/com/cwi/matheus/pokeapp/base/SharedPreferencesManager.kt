@@ -2,7 +2,6 @@ package com.cwi.matheus.pokeapp.base
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
-import com.cwi.matheus.pokeapp.util.showConfirmDialog
 
 class SharedPreferencesManager(
     private val context: Context) {

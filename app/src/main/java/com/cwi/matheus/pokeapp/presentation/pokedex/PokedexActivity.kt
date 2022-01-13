@@ -19,8 +19,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokedexActivity : BaseBottomNavigationActivity() {
 
-    private lateinit var binding : ActivityPokedexBinding
-    private val viewModel : PokedexViewModel by viewModel()
+    private lateinit var binding: ActivityPokedexBinding
+    private val viewModel: PokedexViewModel by viewModel()
 
     override val tab: Int = R.id.menu_pokedex_pokemons
 
@@ -36,10 +36,13 @@ class PokedexActivity : BaseBottomNavigationActivity() {
         viewModel.pokedex.observe(this) { list ->
             binding.rvPokedexList.adapter = PokedexAdapter(this, list,
                 onItemClick = { pokemon ->
-                    val intent = Intent(this@PokedexActivity, PokemonDetailActivity::class.java)
+                    val intent = Intent(this@PokedexActivity,
+                        PokemonDetailActivity::class.java)
+
                     intent.putExtra(EXTRAS_POKEMON_ID, pokemon.id)
                     intent.putExtra(EXTRAS_POKEMON_NAME, pokemon.name)
-                    startActivity(intent) },
+                    startActivity(intent)
+                },
                 onConfirmSetFree = { deletedPokemon ->
                     viewModel.deletePokemonFromPokedex(deletedPokemon)
                     showFreePokemonMessage(deletedPokemon)

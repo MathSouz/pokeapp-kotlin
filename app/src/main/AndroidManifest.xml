@@ -30,8 +30,7 @@
             android:name=".presentation.pokemon.PokemonHostActivity">
         </activity>
         <activity
-            android:name=".presentation.pokemonDetail.PokemonDetailActivity"
-            android:theme="@style/Theme.PokeApp" />
+            android:name=".presentation.pokemonDetail.PokemonDetailActivity" />
         <activity
             android:name=".presentation.pokedex.PokedexActivity" />
     </application>

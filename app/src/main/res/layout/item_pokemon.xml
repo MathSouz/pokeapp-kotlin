@@ -17,8 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/ic_baseline_pest_control_rodent_24"
         android:background="@drawable/circle"
-        android:backgroundTint="@color/transparent_black"
-        />
+        android:backgroundTint="@color/transparent_black" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_pokemon_name"
@@ -41,7 +40,6 @@
         android:src="@drawable/pokemon_enable"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,15 +4,15 @@
     <item
         android:id="@+id/menu_wild_pokemons"
         android:title="@string/txt_wild_pokemons"
-        android:icon="@drawable/ic_baseline_pest_control_rodent_24"/>
+        android:icon="@drawable/ic_baseline_pest_control_rodent_24" />
 
     <item
         android:id="@+id/menu_pokedex_pokemons"
         android:title="@string/txt_my_pokedex"
-        android:icon="@drawable/ic_baseline_amp_stories_24"/>
+        android:icon="@drawable/ic_baseline_amp_stories_24" />
 
     <item
         android:id="@+id/menu_preferences"
         android:title="@string/txt_preferences"
-        android:icon="@drawable/ic_baseline_info_24"/>
+        android:icon="@drawable/ic_baseline_info_24" />
 </menu>

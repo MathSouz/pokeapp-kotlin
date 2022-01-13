@@ -3,7 +3,6 @@ package com.cwi.matheus.pokeapp.service
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import com.cwi.matheus.pokeapp.R

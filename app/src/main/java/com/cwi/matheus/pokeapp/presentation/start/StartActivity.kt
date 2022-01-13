@@ -2,11 +2,9 @@ package com.cwi.matheus.pokeapp.presentation.start
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.cwi.matheus.pokeapp.databinding.ActivityStartBinding
 import com.cwi.matheus.pokeapp.presentation.base.BaseSecureByBiometryActivity
 import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonHostActivity
-import com.cwi.matheus.pokeapp.service.BiometryService
 
 class StartActivity : BaseSecureByBiometryActivity() {
     private lateinit var binding : ActivityStartBinding
