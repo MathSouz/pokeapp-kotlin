@@ -1,17 +1,16 @@
 package com.cwi.matheus.pokeapp.presentation.pokemon.fragment.pokemonDetail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.cwi.matheus.pokeapp.R
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_ID
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_NAME
 import com.cwi.matheus.pokeapp.databinding.FragmentPokemonDetailBinding
-import com.cwi.matheus.pokeapp.domain.entity.Pokemon
 import com.cwi.matheus.pokeapp.extension.capitalize
 import com.cwi.matheus.pokeapp.extension.visibleOrGone
 import com.cwi.matheus.pokeapp.presentation.pokemonDetail.PokemonDetailAdapter
@@ -66,24 +65,10 @@ class PokemonDetailFragment : Fragment() {
                 binding.tvPokemonWeight.text = getString(R.string.txt_pokemon_weight, pokemon.weight)
                 binding.tvPokemonHeight.text = getString(R.string.txt_pokemon_height, pokemon.height)
                 Glide.with(this).load(pokemon.imageUrl).into(binding.ivPokemonImage)
-                binding.efabCapture.visibleOrGone(true)
-                binding.efabCapture.setOnClickListener {
-                    pokemon.captured = !pokemon.captured
-                    viewModel.setCaptured(pokemon)
-                    viewModel.fetchPokemonDetail(pokemon.id)
-                }
-
-                updateExtendedFloatingActionButtonTextAccordingToPokemonState(pokemon)
 
                 binding.rvPokemonStatList.adapter = PokemonDetailAdapter(context, pokemon.stats)
                 binding.rvPokemonStatList.layoutManager = GridLayoutManager(context, 2)
             }
         }
-    }
-
-    private fun updateExtendedFloatingActionButtonTextAccordingToPokemonState(pokemon: Pokemon) {
-        binding.efabCapture.text =
-            if(pokemon.captured) getString(R.string.txt_set_free)
-            else getString(R.string.txt_capture)
     }
 }

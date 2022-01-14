@@ -59,7 +59,7 @@ class PokemonDetailActivity : AppCompatActivity() {
             binding.efabCapture.visibleOrGone(true)
             binding.efabCapture.setOnClickListener {
                 pokemon.captured = !pokemon.captured
-                viewModel.setCaptured(pokemon)
+                viewModel.updatePokemonInLocalRepository(pokemon)
                 viewModel.fetchPokemonDetail(pokemon.id)
             }
 

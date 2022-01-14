@@ -29,7 +29,7 @@ class PokemonDetailViewModel(
         return localRepository.getAll().find { it.id == pokemon.id } != null
     }
 
-    fun setCaptured(pokemon: Pokemon) {
+    fun updatePokemonInLocalRepository(pokemon: Pokemon) {
 
         if(!pokemon.captured) {
             localRepository.remove(pokemon.id)
