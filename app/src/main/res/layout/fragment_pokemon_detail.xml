@@ -85,12 +85,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_pokemon_weight" />
 
-            <View
+            <include
+                layout="@layout/view_divider"
                 android:id="@+id/v_divider"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginVertical="8dp"
-                android:background="@android:color/darker_gray"
                 app:layout_constraintTop_toBottomOf="@id/tv_pokemon_stats_label" />
 
             <androidx.recyclerview.widget.RecyclerView
