@@ -9,6 +9,7 @@ import com.cwi.matheus.pokeapp.domain.repository.PokeApiLocalRepository
 import com.cwi.matheus.pokeapp.domain.repository.PokeApiRepository
 import com.cwi.matheus.pokeapp.extension.test
 import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonViewModel
+import com.cwi.matheus.pokeapp.presentation.pokemon.viewModel.PokemonViewModel
 import io.mockk.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -65,7 +66,7 @@ class PokemonViewModelTest {
         val simplePokemon = SimplePokemon(0, "Pikachu", "pikachu.png", true)
         val pokemon = Pokemon(0, "Pikachu", 10, 10, "pikachu.png", statList, true)
 
-        coEvery { pokeApiRepository.getPokemonByID(simplePokemon.id) }.returns(pokemon)
+        coEvery { pokeApiRepository.getPokemonByID(simplePokemon.pokemonId) }.returns(pokemon)
         every { pokeApiLocalRepository.add(pokemon) }.returns(Unit)
 
         viewModel.updateLocalRepositoryFromPokemonCaptureState(simplePokemon)
