@@ -16,7 +16,10 @@ class PokeApiRepositoryImpl(private val api: PokeApi) : PokeApiRepository {
 
     override suspend fun getPokemonList(page: Int): List<SimplePokemon> {
         return withContext(Dispatchers.IO) {
-            api.getPokemonList(page * SIMPLE_POKEMONS_PER_PAGE).pokemons.map {
+            api.getPokemonList(
+                page * SIMPLE_POKEMONS_PER_PAGE,
+                SIMPLE_POKEMONS_PER_PAGE
+            ).pokemons.map {
                 SimplePokemonMapper().toDomain(it)
             }
         }
