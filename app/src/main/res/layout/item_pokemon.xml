@@ -29,17 +29,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_pokemon_image"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="pokemon name" />
+        tools:text="Pokemon Name" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/ib_favorite"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:background="@android:color/transparent"
-        android:scaleType="centerInside"
-        android:src="@drawable/pokemon_enable"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_pokemon_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tv_pokemon_name"
+        tools:text="x32" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

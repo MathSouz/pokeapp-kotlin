@@ -14,13 +14,13 @@ import com.cwi.matheus.pokeapp.databinding.FragmentPokemonDetailBinding
 import com.cwi.matheus.pokeapp.extension.capitalize
 import com.cwi.matheus.pokeapp.extension.visibleOrGone
 import com.cwi.matheus.pokeapp.presentation.pokemonDetail.PokemonDetailAdapter
-import com.cwi.matheus.pokeapp.presentation.pokemonDetail.PokemonDetailViewModel
+import com.cwi.matheus.pokeapp.presentation.pokemonDetail.viewModel.PokemonDetailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokemonDetailFragment : Fragment() {
 
-    private val viewModel : PokemonDetailViewModel by viewModel()
-    private lateinit var binding : FragmentPokemonDetailBinding
+    private val viewModel: PokemonDetailViewModel by viewModel()
+    private lateinit var binding: FragmentPokemonDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +47,7 @@ class PokemonDetailFragment : Fragment() {
                 viewModel.error.observe(viewLifecycleOwner) {
                     binding.viewError.root.visibleOrGone(it)
 
-                    if(it) {
+                    if (it) {
                         binding.viewError.bTryAgain.setOnClickListener {
                             viewModel.fetchPokemonDetail(pokemonId)
                         }
@@ -60,14 +60,20 @@ class PokemonDetailFragment : Fragment() {
             }
 
             viewModel.currentPokemon.observe(viewLifecycleOwner) { pokemon ->
-                binding.tvPokemonId.text = pokemon.id.toString()
+                binding.tvPokemonId.text = pokemon.pokemonId.toString()
                 binding.tvPokemonName.text = pokemon.name.capitalize()
-                binding.tvPokemonWeight.text = getString(R.string.txt_pokemon_weight, pokemon.weight)
-                binding.tvPokemonHeight.text = getString(R.string.txt_pokemon_height, pokemon.height)
+                binding.tvPokemonWeight.text =
+                    getString(R.string.txt_pokemon_weight, pokemon.weight)
+                binding.tvPokemonHeight.text =
+                    getString(R.string.txt_pokemon_height, pokemon.height)
                 Glide.with(this).load(pokemon.imageUrl).into(binding.ivPokemonImage)
 
                 binding.rvPokemonStatList.adapter = PokemonDetailAdapter(context, pokemon.stats)
                 binding.rvPokemonStatList.layoutManager = GridLayoutManager(context, 2)
+
+                binding.bCapture.setOnClickListener {
+                    viewModel.capturePokemon(pokemon)
+                }
             }
         }
     }

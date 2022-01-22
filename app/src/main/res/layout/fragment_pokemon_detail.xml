@@ -104,6 +104,14 @@
                 tools:layout_editor_absoluteX="0dp"
                 tools:listitem="@layout/item_pokemon_stat" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:id="@+id/b_capture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/rv_pokemon_stat_list"
+                android:text="@string/txt_capture"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -1,8 +1,8 @@
 package com.cwi.matheus.pokeapp.domain.entity
 
 data class SimplePokemon(
-    val id : Int,
+    val pokemonId : Int,
     val name : String,
     val imageUrl : String,
-    var captured : Boolean = false
+    var count : Int = 0
 )

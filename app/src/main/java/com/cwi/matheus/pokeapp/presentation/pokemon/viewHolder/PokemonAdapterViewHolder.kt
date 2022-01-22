@@ -10,6 +10,6 @@ import com.cwi.matheus.pokeapp.databinding.ItemPokemonBinding
 class PokemonAdapterViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
     val tvPokemonName : AppCompatTextView = ItemPokemonBinding.bind(itemView).tvPokemonName
     val ivPokemonImage : AppCompatImageView = ItemPokemonBinding.bind(itemView).ivPokemonImage
-    val ibFavorite : AppCompatImageButton = ItemPokemonBinding.bind(itemView).ibFavorite
+    val tvPokemonCount : AppCompatTextView = ItemPokemonBinding.bind(itemView).tvCount
     val root = ItemPokemonBinding.bind(itemView).root
 }

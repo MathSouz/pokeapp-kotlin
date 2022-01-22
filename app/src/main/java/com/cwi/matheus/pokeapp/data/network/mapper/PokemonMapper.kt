@@ -6,11 +6,11 @@ import com.cwi.matheus.pokeapp.domain.entity.Pokemon
 import com.cwi.matheus.pokeapp.domain.entity.PokemonStat
 import com.cwi.matheus.pokeapp.domain.entity.Stat
 
-class PokemonMapper : DomainMapper<PokemonResponse, Pokemon>{
+class PokemonMapper : DomainMapper<PokemonResponse, Pokemon> {
 
-    fun toEntity(from : Pokemon): PokemonEntity =
+    fun toEntity(from: Pokemon): PokemonEntity =
         PokemonEntity(
-            id = from.id,
+            pokemonId = from.pokemonId,
             name = from.name,
             height = from.height,
             weight = from.weight,
@@ -22,12 +22,14 @@ class PokemonMapper : DomainMapper<PokemonResponse, Pokemon>{
         val statList = from.stats.map { PokemonStat(it.baseStat, it.baseStat, Stat(it.stat.name)) }
 
         return Pokemon(
-            id = from.id,
+            pokemonId = from.id,
             name = from.name,
             height = from.height,
             weight = from.weight,
             imageUrl = getArtworkUrlByPokemonId(from.id),
-            stats = statList)
+            stats = statList,
+            createdAt = System.currentTimeMillis()
+        )
     }
 
 
@@ -37,6 +39,6 @@ class PokemonMapper : DomainMapper<PokemonResponse, Pokemon>{
      * Estou buscando a imagem do pokemon desta forma por que a API não entrega a URL pelo endpoint,
      * no caso, eu teria que fazer duas requisições diferentes apenas para buscar a imagem.
      */
-    private fun getArtworkUrlByPokemonId(id : Int) : String =
+    private fun getArtworkUrlByPokemonId(id: Int): String =
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png"
 }

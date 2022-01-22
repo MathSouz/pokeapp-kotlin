@@ -5,14 +5,15 @@ import com.cwi.matheus.pokeapp.R
 import com.cwi.matheus.pokeapp.databinding.ActivityPokemonHostBinding
 import com.cwi.matheus.pokeapp.extension.visibleOrGone
 import com.cwi.matheus.pokeapp.presentation.base.BaseBottomNavigationActivity
+import com.cwi.matheus.pokeapp.presentation.pokemon.viewModel.PokemonViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokemonHostActivity : BaseBottomNavigationActivity() {
 
-    private lateinit var binding : ActivityPokemonHostBinding
+    private lateinit var binding: ActivityPokemonHostBinding
 
-    private val viewModel : PokemonViewModel by viewModel()
+    private val viewModel: PokemonViewModel by viewModel()
 
     override val tab: Int = R.id.menu_wild_pokemons
     override fun getBottomNavigation(): BottomNavigationView =

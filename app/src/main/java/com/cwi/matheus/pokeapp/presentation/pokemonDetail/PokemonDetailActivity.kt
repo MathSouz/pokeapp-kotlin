@@ -8,15 +8,15 @@ import com.cwi.matheus.pokeapp.R
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_ID
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_NAME
 import com.cwi.matheus.pokeapp.databinding.ActivityPokemonDetailBinding
-import com.cwi.matheus.pokeapp.domain.entity.Pokemon
 import com.cwi.matheus.pokeapp.extension.capitalize
 import com.cwi.matheus.pokeapp.extension.visibleOrGone
+import com.cwi.matheus.pokeapp.presentation.pokemonDetail.viewModel.PokemonDetailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokemonDetailActivity : AppCompatActivity() {
 
-    private val viewModel : PokemonDetailViewModel by viewModel()
-    private lateinit var binding : ActivityPokemonDetailBinding
+    private val viewModel: PokemonDetailViewModel by viewModel()
+    private lateinit var binding: ActivityPokemonDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,15 +32,15 @@ class PokemonDetailActivity : AppCompatActivity() {
 
             binding.tvPokemonId.text = pokemonId.toString()
             binding.tvPokemonName.text = capitalizedPokemonName
-            viewModel.fetchPokemonDetail(pokemonId)
+            viewModel.fetchLocalPokemonDetail(pokemonId)
             supportActionBar?.title = capitalizedPokemonName
 
             viewModel.error.observe(this) { error ->
                 binding.viewError.root.visibleOrGone(error)
 
-                if(error) {
+                if (error) {
                     binding.viewError.bTryAgain.setOnClickListener {
-                        viewModel.fetchPokemonDetail(pokemonId)
+                        viewModel.fetchLocalPokemonDetail(pokemonId)
                     }
                 }
             }
@@ -56,14 +56,6 @@ class PokemonDetailActivity : AppCompatActivity() {
             binding.tvPokemonWeight.text = getString(R.string.txt_pokemon_weight, pokemon.weight)
             binding.tvPokemonHeight.text = getString(R.string.txt_pokemon_height, pokemon.height)
             Glide.with(this).load(pokemon.imageUrl).into(binding.ivPokemonImage)
-            binding.efabCapture.visibleOrGone(true)
-            binding.efabCapture.setOnClickListener {
-                pokemon.captured = !pokemon.captured
-                viewModel.updatePokemonInLocalRepository(pokemon)
-                viewModel.fetchPokemonDetail(pokemon.id)
-            }
-
-            updateExtendedFloatingActionButtonTextAccordingToPokemonState(pokemon)
 
             binding.rvPokemonStatList.adapter = PokemonDetailAdapter(this, pokemon.stats)
             binding.rvPokemonStatList.layoutManager = GridLayoutManager(this, 2)
@@ -74,11 +66,4 @@ class PokemonDetailActivity : AppCompatActivity() {
         onBackPressed()
         return true
     }
-
-    private fun updateExtendedFloatingActionButtonTextAccordingToPokemonState(pokemon: Pokemon) {
-        binding.efabCapture.text =
-            if(pokemon.captured) getString(R.string.txt_set_free)
-            else getString(R.string.txt_capture)
-    }
-
 }

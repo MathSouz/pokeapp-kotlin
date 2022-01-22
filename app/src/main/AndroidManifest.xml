@@ -26,13 +26,9 @@
         <activity
             android:name=".presentation.preferences.PreferencesActivity"
             android:label="@string/txt_preferences" />
-        <activity
-            android:name=".presentation.pokemon.PokemonHostActivity">
-        </activity>
-        <activity
-            android:name=".presentation.pokemonDetail.PokemonDetailActivity" />
-        <activity
-            android:name=".presentation.pokedex.PokedexActivity" />
+        <activity android:name=".presentation.pokemon.PokemonHostActivity" />
+        <activity android:name=".presentation.pokemonDetail.PokemonDetailActivity" />
+        <activity android:name=".presentation.pokedex.PokedexActivity" />
     </application>
 
 </manifest>

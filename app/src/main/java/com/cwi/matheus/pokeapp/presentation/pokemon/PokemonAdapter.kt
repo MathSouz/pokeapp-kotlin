@@ -14,8 +14,7 @@ import com.cwi.matheus.pokeapp.presentation.pokemon.viewHolder.PokemonAdapterVie
 class PokemonAdapter(
     private val context : Context,
     var list : List<SimplePokemon> = listOf(),
-    private val onListItemClick : (SimplePokemon) -> Unit,
-    private val onCaptureClick:(SimplePokemon) -> Unit) :
+    private val onListItemClick : (SimplePokemon) -> Unit) :
     RecyclerView.Adapter<PokemonAdapterViewHolder>() {
 
     fun appendNewPokemons(newPokemonList : List<SimplePokemon>) {
@@ -34,14 +33,7 @@ class PokemonAdapter(
                 onListItemClick(simplePokemon)
             }
 
-            with(holder.ibFavorite) {
-                setImageDrawable(getFavoriteIcon(simplePokemon))
-                setOnClickListener {
-                    simplePokemon.captured = !simplePokemon.captured
-                    setImageDrawable(getFavoriteIcon(simplePokemon))
-                    onCaptureClick(simplePokemon)
-                }
-            }
+            holder.tvPokemonCount.text = "x${simplePokemon.count}"
 
             Glide.with(context)
                 .load(simplePokemon.imageUrl)
@@ -49,13 +41,6 @@ class PokemonAdapter(
                 .into(holder.ivPokemonImage)
         }
     }
-
-    private fun getFavoriteIcon(pokemon: SimplePokemon) = ContextCompat.getDrawable(
-        context,
-        if (pokemon.captured) R.drawable.pokemon_enable
-        else R.drawable.pokemon_disable
-    )
-
 
     override fun getItemCount(): Int = list.size
 }

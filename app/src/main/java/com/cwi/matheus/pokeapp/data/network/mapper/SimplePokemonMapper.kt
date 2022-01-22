@@ -8,7 +8,7 @@ class SimplePokemonMapper : DomainMapper<SimplePokemonResponse, SimplePokemon> {
         val splitBySlash = from.url.split("/")
         val pokemonIdInURL = splitBySlash[splitBySlash.size - 2]
         return SimplePokemon(
-            id = pokemonIdInURL.toInt(),
+            pokemonId = pokemonIdInURL.toInt(),
             name = from.name,
             imageUrl = parsePokemonIDToSimpleSpriteURL(pokemonIdInURL))
     }

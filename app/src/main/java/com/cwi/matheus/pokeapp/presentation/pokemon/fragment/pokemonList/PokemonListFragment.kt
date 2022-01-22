@@ -16,11 +16,9 @@ import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_ID
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_NAME
 import com.cwi.matheus.pokeapp.databinding.FragmentPokemonListBinding
 import com.cwi.matheus.pokeapp.domain.entity.SimplePokemon
-import com.cwi.matheus.pokeapp.extension.capitalize
 import com.cwi.matheus.pokeapp.extension.visibleOrGone
 import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonAdapter
-import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonViewModel
-import com.google.android.material.snackbar.Snackbar
+import com.cwi.matheus.pokeapp.presentation.pokemon.viewModel.PokemonViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PokemonListFragment : Fragment() {
@@ -53,18 +51,6 @@ class PokemonListFragment : Fragment() {
         }
     }
 
-    private fun onCaptureClick(simplePokemon: SimplePokemon) {
-        viewModel.updateLocalRepositoryFromPokemonCaptureState(simplePokemon)
-
-        val snackBarText =
-            if (simplePokemon.captured)
-                getString(R.string.txt_pokemon_captured, simplePokemon.name.capitalize())
-            else
-                getString(R.string.txt_pokemon_free, simplePokemon.name.capitalize())
-
-        Snackbar.make(binding.rvPokemonList, snackBarText, Snackbar.LENGTH_SHORT).show()
-    }
-
     private fun setupRecyclerView() {
 
         context?.let { context ->
@@ -72,8 +58,7 @@ class PokemonListFragment : Fragment() {
                 .addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
 
             val adapter = PokemonAdapter(context,
-                onListItemClick = { simplePokemon -> navigateToPokemonDetail(simplePokemon) },
-                onCaptureClick = { onCaptureClick(it) }
+                onListItemClick = { simplePokemon -> navigateToPokemonDetail(simplePokemon) }
             )
 
             binding.rvPokemonList.adapter = adapter
@@ -109,7 +94,7 @@ class PokemonListFragment : Fragment() {
         findNavController().navigate(
             R.id.pokemon_detail_fragment,
             bundleOf(
-                Pair(EXTRAS_POKEMON_ID, simplePokemon.id),
+                Pair(EXTRAS_POKEMON_ID, simplePokemon.pokemonId),
                 Pair(EXTRAS_POKEMON_NAME, simplePokemon.name)
             )
         )

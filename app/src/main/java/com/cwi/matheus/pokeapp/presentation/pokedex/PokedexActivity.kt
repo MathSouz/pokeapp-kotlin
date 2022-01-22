@@ -36,8 +36,10 @@ class PokedexActivity : BaseBottomNavigationActivity() {
         viewModel.pokedex.observe(this) { list ->
             binding.rvPokedexList.adapter = PokedexAdapter(this, list,
                 onItemClick = { pokemon ->
-                    val intent = Intent(this@PokedexActivity,
-                        PokemonDetailActivity::class.java)
+                    val intent = Intent(
+                        this@PokedexActivity,
+                        PokemonDetailActivity::class.java
+                    )
 
                     intent.putExtra(EXTRAS_POKEMON_ID, pokemon.id)
                     intent.putExtra(EXTRAS_POKEMON_NAME, pokemon.name)
