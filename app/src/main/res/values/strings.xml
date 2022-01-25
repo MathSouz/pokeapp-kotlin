@@ -10,6 +10,8 @@
     <string name="txt_set_free_pokemon_dialog_title_text">Realmente deseja libertar %1$s?</string>
     <string name="txt_pokemon_captured">%1$s capturado!</string>
     <string name="txt_pokemon_free">%1$s está livre!</string>
+    <string name="txt_pokemon_count">x%1$d</string>
+    <string name="txt_pokemon_date">%1$02d/%2$02d/%3$d (%4$02d:%5$02d:%6$02d) (há %7$d minutos)</string>
     <string name="txt_yes">Sim</string>
     <string name="txt_no">Não</string>
     <string name="txt_loading">Carregando…</string>
@@ -19,7 +21,7 @@
     <string name="txt_preferences">Preferências</string>
     <string name="txt_uses_pokeapi">Essa aplicação utiliza o <a href="https://pokeapi.co/">PokeApi</a>.</string>
     <string name="txt_2022">2022</string>
-    <string name="txt_techs">Também é utilizado Android X, Koin, Retrofit, Moshi, Glide, Room, Mockk</string>
+    <string name="txt_techs">Também é utilizado Android X, Koin, Retrofit, Moshi, Glide, Room, Mockk, GSON</string>
     <string name="txt_owner">Matheus M. Souza</string>
     <string name="txt_made_by">Feito por</string>
     <string name="txt_credits">Créditos</string>

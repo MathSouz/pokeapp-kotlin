@@ -2,6 +2,7 @@ package com.cwi.matheus.pokeapp.presentation.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.cwi.matheus.pokeapp.data.sharedPreferences.SharedPreferencesRepositoryImpl
 import com.cwi.matheus.pokeapp.service.BiometryService
 
 abstract class BaseSecureByBiometryActivity : AppCompatActivity() {
@@ -15,13 +16,17 @@ abstract class BaseSecureByBiometryActivity : AppCompatActivity() {
             this,
             onAuthenticationFail = { onAuthFail() },
             onAuthenticationSuccess = { onAuthSuccess() },
-            onAuthenticationNotNeeded = { onAuthNotNeeded() })
+            onAuthenticationNotNeeded = { onAuthNotNeeded() },
+            sharedPreferencesRepositoryImpl = SharedPreferencesRepositoryImpl(this)
+        )
         biometryService.callBiometricAuth()
     }
 
-    abstract fun isSecured() : Boolean
+    abstract fun isSecured(): Boolean
 
-    open fun onAuthFail() { onBackPressed() }
+    open fun onAuthFail() {
+        onBackPressed()
+    }
 
     open fun onAuthSuccess() {}
 

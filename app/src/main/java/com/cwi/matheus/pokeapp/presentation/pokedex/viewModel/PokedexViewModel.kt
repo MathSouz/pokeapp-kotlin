@@ -7,11 +7,12 @@ import com.cwi.matheus.pokeapp.domain.repository.PokeApiLocalRepository
 import com.cwi.matheus.pokeapp.presentation.base.BaseViewModel
 
 class PokedexViewModel(
-    private val localRepository: PokeApiLocalRepository) : BaseViewModel() {
-    
+    private val localRepository: PokeApiLocalRepository
+) : BaseViewModel() {
+
     private val _pokedex = MutableLiveData<List<Pokemon>>()
-    val pokedex : LiveData<List<Pokemon>> = _pokedex
-    
+    val pokedex: LiveData<List<Pokemon>> = _pokedex
+
     fun fetchPokedex() {
         launch {
             val pokedexList = localRepository.getAll()

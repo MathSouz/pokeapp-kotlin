@@ -3,7 +3,6 @@ package com.cwi.matheus.pokeapp.presentation.pokemon
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cwi.matheus.pokeapp.R
@@ -12,19 +11,21 @@ import com.cwi.matheus.pokeapp.extension.capitalize
 import com.cwi.matheus.pokeapp.presentation.pokemon.viewHolder.PokemonAdapterViewHolder
 
 class PokemonAdapter(
-    private val context : Context,
-    var list : List<SimplePokemon> = listOf(),
-    private val onListItemClick : (SimplePokemon) -> Unit) :
+    private val context: Context,
+    var list: List<SimplePokemon> = listOf(),
+    private val onListItemClick: (SimplePokemon) -> Unit
+) :
     RecyclerView.Adapter<PokemonAdapterViewHolder>() {
 
-    fun appendNewPokemons(newPokemonList : List<SimplePokemon>) {
+    fun appendNewPokemons(newPokemonList: List<SimplePokemon>) {
         list = newPokemonList
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonAdapterViewHolder =
         PokemonAdapterViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.item_pokemon, parent, false ))
+            LayoutInflater.from(context).inflate(R.layout.item_pokemon, parent, false)
+        )
 
     override fun onBindViewHolder(holder: PokemonAdapterViewHolder, position: Int) {
         list[position].let { simplePokemon ->
@@ -33,7 +34,8 @@ class PokemonAdapter(
                 onListItemClick(simplePokemon)
             }
 
-            holder.tvPokemonCount.text = "x${simplePokemon.count}"
+            val pokemonCount = context.getString(R.string.txt_pokemon_count, simplePokemon.count)
+            holder.tvPokemonCount.text = pokemonCount
 
             Glide.with(context)
                 .load(simplePokemon.imageUrl)

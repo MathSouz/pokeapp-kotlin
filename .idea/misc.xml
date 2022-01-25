@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/drawable/circle.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/drawable/ic_baseline_delete_forever_24.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/activity_about.xml" value="0.259375" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/activity_main.xml" value="0.259375" />
@@ -19,7 +20,7 @@
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/fragment_pokedex_list.xml" value="0.259375" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/fragment_pokemon_detail.xml" value="0.259375" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/fragment_pokemon_list.xml" value="0.2453125" />
-        <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/item_pokedex.xml" value="0.259375" />
+        <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/item_pokedex.xml" value="0.3949129852744311" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/item_pokemon.xml" value="0.4" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/item_pokemon_stat.xml" value="0.6" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/view_bottom_navigation.xml" value="0.259375" />
@@ -27,8 +28,10 @@
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/view_error.xml" value="0.264" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/view_loading.xml" value="0.259375" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/view_pokedex_empty_list.xml" value="0.264" />
+        <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/layout/view_type.xml" value="0.6" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/menu/detailed_pokemon_menu.xml" value="0.259375" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/menu/navigation_menu.xml" value="0.259375" />
+        <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/menu/pokedex.xml" value="0.264" />
         <entry key="..\:/Users/tedar/Documents/CWI/PokeApp/app/src/main/res/menu/pokedex_menu.xml" value="0.1265625" />
       </map>
     </option>

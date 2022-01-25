@@ -1,9 +1,12 @@
 package com.cwi.matheus.pokeapp.data.network.mapper
 
 import com.cwi.matheus.pokeapp.data.database.entity.PokemonEntity
+import com.cwi.matheus.pokeapp.data.database.entity.PokemonStatList
+import com.cwi.matheus.pokeapp.data.database.entity.PokemonTypeList
 import com.cwi.matheus.pokeapp.data.network.entity.PokemonResponse
 import com.cwi.matheus.pokeapp.domain.entity.Pokemon
 import com.cwi.matheus.pokeapp.domain.entity.PokemonStat
+import com.cwi.matheus.pokeapp.domain.entity.PokemonType
 import com.cwi.matheus.pokeapp.domain.entity.Stat
 
 class PokemonMapper : DomainMapper<PokemonResponse, Pokemon> {
@@ -15,11 +18,14 @@ class PokemonMapper : DomainMapper<PokemonResponse, Pokemon> {
             height = from.height,
             weight = from.weight,
             imageUrl = from.imageUrl,
-            stats = from.stats
+            stats = PokemonStatList(from.stats),
+            id = from.id,
+            types = PokemonTypeList(from.types)
         )
 
     override fun toDomain(from: PokemonResponse): Pokemon {
         val statList = from.stats.map { PokemonStat(it.baseStat, it.baseStat, Stat(it.stat.name)) }
+        val typeList = from.types.map { PokemonType(it.type.name, it.type.url) }
 
         return Pokemon(
             pokemonId = from.id,
@@ -28,7 +34,8 @@ class PokemonMapper : DomainMapper<PokemonResponse, Pokemon> {
             weight = from.weight,
             imageUrl = getArtworkUrlByPokemonId(from.id),
             stats = statList,
-            createdAt = System.currentTimeMillis()
+            createdAt = System.currentTimeMillis(),
+            types = typeList
         )
     }
 

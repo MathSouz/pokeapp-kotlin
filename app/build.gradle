@@ -110,4 +110,6 @@ dependencies {
     // Biometric
     implementation "androidx.biometric:biometric-ktx:$biometric"
 
+    implementation "com.google.code.gson:gson:2.8.8"
+
 }

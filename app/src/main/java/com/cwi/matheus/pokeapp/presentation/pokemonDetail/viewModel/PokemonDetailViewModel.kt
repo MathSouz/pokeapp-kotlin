@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.cwi.matheus.pokeapp.domain.entity.Pokemon
 import com.cwi.matheus.pokeapp.domain.repository.PokeApiLocalRepository
 import com.cwi.matheus.pokeapp.domain.repository.PokeApiRepository
+import com.cwi.matheus.pokeapp.extension.capitalize
 import com.cwi.matheus.pokeapp.presentation.base.BaseViewModel
 
 class PokemonDetailViewModel(
@@ -14,6 +15,12 @@ class PokemonDetailViewModel(
 
     private val _currentPokemon = MutableLiveData<Pokemon>()
     val currentPokemon: LiveData<Pokemon> = _currentPokemon
+
+    fun savePokemon(pokemon: Pokemon) {
+        launch {
+            localRepository.update(pokemon)
+        }
+    }
 
     fun fetchLocalPokemonDetail(id: Int) {
         launch {
@@ -31,6 +38,7 @@ class PokemonDetailViewModel(
 
     fun capturePokemon(pokemon: Pokemon) {
         launch {
+            pokemon.name = pokemon.name.capitalize()
             localRepository.add(pokemon)
         }
     }

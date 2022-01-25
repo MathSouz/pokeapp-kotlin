@@ -6,29 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".presentation.pokedex.PokedexActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorOnPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/pokedex"
+        app:title="@string/txt_my_pokedex" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_pokedex_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:background="?attr/colorOnPrimary"
         app:layout_constraintBottom_toTopOf="@+id/bnv_nav"
-        app:layout_constraintTop_toTopOf="parent"
-        app:spanCount="2"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         tools:listitem="@layout/item_pokedex" />
 
     <include
-        tools:visibility="gone"
         android:id="@+id/view_pokedex_empty_list"
         layout="@layout/view_pokedex_empty_list"
-        android:layout_height="0dp"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/rv_pokedex_list"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
 
     <include
         android:id="@+id/view_loading"
-        tools:visibility="gone"
-        layout="@layout/view_loading" />
+        layout="@layout/view_loading"
+        tools:visibility="gone" />
 
     <include
         android:id="@+id/bnv_nav"

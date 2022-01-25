@@ -7,7 +7,7 @@ import com.cwi.matheus.pokeapp.presentation.base.BaseSecureByBiometryActivity
 import com.cwi.matheus.pokeapp.presentation.pokemon.PokemonHostActivity
 
 class StartActivity : BaseSecureByBiometryActivity() {
-    private lateinit var binding : ActivityStartBinding
+    private lateinit var binding: ActivityStartBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

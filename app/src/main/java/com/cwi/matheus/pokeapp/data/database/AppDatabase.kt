@@ -9,7 +9,7 @@ import com.cwi.matheus.pokeapp.data.database.dao.PokemonDao
 import com.cwi.matheus.pokeapp.data.database.entity.PokemonEntity
 import com.cwi.matheus.pokeapp.data.database.typeconverter.Converters
 
-@Database(entities = [PokemonEntity::class], version = 2)
+@Database(entities = [PokemonEntity::class], version = 3)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 

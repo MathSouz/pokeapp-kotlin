@@ -9,4 +9,5 @@ interface PokeApiLocalRepository {
     fun existsById(id: Int): Boolean
     fun countByPokemonId(pokemonId: Int): Int
     fun findById(id: Int): Pokemon
+    fun update(pokemon: Pokemon)
 }

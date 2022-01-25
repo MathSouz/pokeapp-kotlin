@@ -6,8 +6,8 @@ import com.cwi.matheus.pokeapp.R
 
 fun showConfirmDialog(
     context: Context,
-    title : String,
-    onConfirm : () -> Unit
+    title: String,
+    onConfirm: () -> Unit
 ) {
 
     val yesText = context.getString(R.string.txt_yes)
@@ -18,8 +18,7 @@ fun showConfirmDialog(
             onConfirm()
             dialog.dismiss()
         }
-        .setNegativeButton(noText) {
-                dialog, _ ->
+        .setNegativeButton(noText) { dialog, _ ->
             dialog.cancel()
         }
         .show()

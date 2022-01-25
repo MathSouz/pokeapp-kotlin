@@ -1,13 +1,10 @@
 package com.cwi.matheus.pokeapp
 
 import android.app.Application
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
-import com.cwi.matheus.pokeapp.base.DARK_MODE_SHARED_PREFERENCES
 import com.cwi.matheus.pokeapp.base.SHARED_PREFERENCE_DARK_MODE
-import com.cwi.matheus.pokeapp.base.SharedPreferencesManager
 import com.cwi.matheus.pokeapp.data.sharedPreferences.SharedPreferencesRepositoryImpl
 import com.cwi.matheus.pokeapp.di.appModules
 import org.koin.android.ext.koin.androidContext
@@ -26,7 +23,14 @@ class MainApplication : Application() {
             modules(appModules)
         }
 
-        if(SharedPreferencesRepositoryImpl(this).isDarkMode()) {
+        val sharedPreferences = SharedPreferencesRepositoryImpl(this)
+        val darkMode = sharedPreferences.readBoolean(SHARED_PREFERENCE_DARK_MODE, true)
+
+        setDarkMode(darkMode)
+    }
+
+    private fun setDarkMode(darkMode: Boolean) {
+        if (darkMode) {
             AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
         } else {
             AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)

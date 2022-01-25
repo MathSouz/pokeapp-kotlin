@@ -3,8 +3,9 @@ package com.cwi.matheus.pokeapp.presentation.preferences
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.widget.CompoundButton
+import androidx.appcompat.app.AppCompatDelegate
+import com.cwi.matheus.pokeapp.MainApplication
 import com.cwi.matheus.pokeapp.R
-import com.cwi.matheus.pokeapp.base.SharedPreferencesManager
 import com.cwi.matheus.pokeapp.databinding.ActivityPreferencesBinding
 import com.cwi.matheus.pokeapp.presentation.base.BaseBottomNavigationActivity
 import com.cwi.matheus.pokeapp.presentation.preferences.viewModel.PreferencesViewModel
@@ -16,7 +17,7 @@ class PreferencesActivity : BaseBottomNavigationActivity() {
 
     private lateinit var binding: ActivityPreferencesBinding
     override val tab: Int = R.id.menu_preferences
-    private val viewModel : PreferencesViewModel by viewModel()
+    private val viewModel: PreferencesViewModel by viewModel()
 
     override fun getBottomNavigation(): BottomNavigationView =
         binding.viewBottomNavigation.root

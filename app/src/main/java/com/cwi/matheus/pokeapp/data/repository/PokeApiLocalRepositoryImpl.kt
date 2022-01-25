@@ -12,6 +12,7 @@ class PokeApiLocalRepositoryImpl(
 
     private val dataAccessObject = database.getPokemonDao()
     private val pokemonEntityMapper = PokemonEntityMapper()
+    private val pokemonMapper = PokemonMapper()
 
     override fun add(pokemon: Pokemon) {
         val pokemonEntity = PokemonMapper().toEntity(pokemon)
@@ -32,5 +33,8 @@ class PokeApiLocalRepositoryImpl(
 
     override fun findById(id: Int): Pokemon =
         pokemonEntityMapper.toDomain(dataAccessObject.findById(id))
+
+    override fun update(pokemon: Pokemon) =
+        dataAccessObject.update(pokemonMapper.toEntity(pokemon))
 
 }

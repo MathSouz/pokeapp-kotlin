@@ -4,49 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="8dp"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="?attr/colorPrimary"
-    android:foreground="?attr/selectableItemBackground">
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="8dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_pokemon_image"
-            android:layout_width="match_parent"
-            android:layout_height="96dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/rect_round"
+            android:backgroundTint="?attr/colorOnPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_pokemon_name"
+            app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/ic_baseline_pest_control_rodent_24"
-            android:background="@color/transparent_black" />
+            tools:tint="?attr/colorOnSecondary" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_selected"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_pokemon_image"
+            app:layout_constraintEnd_toEndOf="@+id/iv_pokemon_image"
+            app:srcCompat="@drawable/ic_baseline_verified_24"
+            app:tint="@android:color/holo_green_light" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_pokemon_name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:textColor="?attr/colorSecondary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="8dp"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_pokemon_image"
+            app:layout_constraintTop_toTopOf="@+id/iv_pokemon_image"
             tools:text="Ditto" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_types"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/iv_pokemon_image"
-            android:gravity="end">
+            android:layout_marginStart="8dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/tv_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_pokemon_image"
+            app:layout_constraintTop_toBottomOf="@id/tv_pokemon_name"
+            tools:itemCount="10"
+            tools:listitem="@layout/view_type" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/b_set_free"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_set_free" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:padding="4dp"
+            android:textAlignment="textEnd"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_pokemon_image"
+            app:layout_constraintStart_toEndOf="@+id/iv_pokemon_image"
+            tools:text="26/02/1998" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

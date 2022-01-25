@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorOnPrimary"
     tools:context=".presentation.pokemonDetail.PokemonDetailActivity">
 
     <androidx.core.widget.NestedScrollView
@@ -21,34 +22,26 @@
                 android:layout_width="128dp"
                 android:layout_height="128dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/circle"
+                android:background="@drawable/rect_round"
                 android:backgroundTint="@color/transparent_black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_baseline_pest_control_rodent_24" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/tv_pokemon_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
+                android:background="@android:color/transparent"
+                android:singleLine="true"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_pokemon_image"
                 tools:text="Ditto" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_pokemon_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_pokemon_name"
-                app:layout_constraintStart_toEndOf="@+id/tv_pokemon_name"
-                app:layout_constraintTop_toTopOf="@+id/tv_pokemon_name"
-                tools:text="(1)" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_pokemon_height"
@@ -85,8 +78,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_pokemon_weight" />
 
             <include
-                layout="@layout/view_divider"
                 android:id="@+id/v_divider"
+                layout="@layout/view_divider"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginVertical="8dp"
@@ -104,22 +97,31 @@
                 tools:layout_editor_absoluteX="0dp"
                 tools:listitem="@layout/item_pokemon_stat" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/b_save"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="Salvar"
+                app:layout_constraintTop_toBottomOf="@id/rv_pokemon_stat_list" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
     <include
         android:id="@+id/view_loading"
-        tools:visibility="gone"
         layout="@layout/view_loading"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:visibility="gone" />
 
     <include
         android:id="@+id/view_error"
-        android:visibility="gone"
         layout="@layout/view_error"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

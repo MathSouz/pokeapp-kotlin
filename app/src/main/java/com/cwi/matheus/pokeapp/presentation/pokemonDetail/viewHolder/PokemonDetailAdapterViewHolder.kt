@@ -5,7 +5,9 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cwi.matheus.pokeapp.databinding.ItemPokemonStatBinding
 
-class PokemonDetailAdapterViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-    val tvPokemonStatName : AppCompatTextView = ItemPokemonStatBinding.bind(itemView).tvPokemonStatName
-    val tvPokemonStatValue : AppCompatTextView = ItemPokemonStatBinding.bind(itemView).tvPokemonStatValue
+class PokemonDetailAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    val tvPokemonStatName: AppCompatTextView =
+        ItemPokemonStatBinding.bind(itemView).tvPokemonStatName
+    val tvPokemonStatValue: AppCompatTextView =
+        ItemPokemonStatBinding.bind(itemView).tvPokemonStatValue
 }

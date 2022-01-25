@@ -1,8 +1,7 @@
 package com.cwi.matheus.pokeapp
 
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 
 class ExampleUnitTest {
     @Test

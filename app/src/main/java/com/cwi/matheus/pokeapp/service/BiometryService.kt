@@ -6,18 +6,23 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import com.cwi.matheus.pokeapp.R
-import com.cwi.matheus.pokeapp.base.SharedPreferencesManager
+import com.cwi.matheus.pokeapp.base.SHARED_PREFERENCE_BIOMETRIC_NEEDED
+import com.cwi.matheus.pokeapp.data.sharedPreferences.SharedPreferencesRepositoryImpl
 
 class BiometryService(
     private val activity: AppCompatActivity,
-    private val onAuthenticationSuccess : () -> Unit,
-    private val onAuthenticationFail : () -> Unit,
-    private val onAuthenticationNotNeeded : () -> Unit) {
+    private val sharedPreferencesRepositoryImpl: SharedPreferencesRepositoryImpl,
+    private val onAuthenticationSuccess: () -> Unit,
+    private val onAuthenticationFail: () -> Unit,
+    private val onAuthenticationNotNeeded: () -> Unit
+) {
 
     fun callBiometricAuth() {
-        val sharedPreferencesManager = SharedPreferencesManager(activity)
 
-        if(sharedPreferencesManager.isBiometryNeed()) {
+        val biometry =
+            sharedPreferencesRepositoryImpl.readBoolean(SHARED_PREFERENCE_BIOMETRIC_NEEDED, false)
+
+        if (biometry) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 showBiometricPrompt()
             }
@@ -39,18 +44,21 @@ class BiometryService(
             activity,
             executor,
             object : BiometricPrompt.AuthenticationCallback() {
-            override fun onAuthenticationError(errorCode: Int,
-                                               errString: CharSequence) {
-                super.onAuthenticationError(errorCode, errString)
-                onBiometricAuthenticationFailed()
-            }
+                override fun onAuthenticationError(
+                    errorCode: Int,
+                    errString: CharSequence
+                ) {
+                    super.onAuthenticationError(errorCode, errString)
+                    onBiometricAuthenticationFailed()
+                }
 
-            override fun onAuthenticationSucceeded(
-                result: BiometricPrompt.AuthenticationResult) {
-                super.onAuthenticationSucceeded(result)
-                onBiometricAuthenticationSuccess()
-            }
-        })
+                override fun onAuthenticationSucceeded(
+                    result: BiometricPrompt.AuthenticationResult
+                ) {
+                    super.onAuthenticationSucceeded(result)
+                    onBiometricAuthenticationSuccess()
+                }
+            })
 
         val promptInfo = BiometricPrompt.PromptInfo.Builder()
             .setTitle(biometricAuthenticationText)

@@ -13,4 +13,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent_black">#44000000</color>
     <color name="dark_gray">#2E2E2E</color>
+
+    <color name="grass">#89D84A</color>
+    <color name="fire">#F95442</color>
+    <color name="normal">#B8B9A8</color>
+    <color name="flying">#77A1FE</color>
+    <color name="poison">#A86BA4</color>
+    <color name="water">#4394E4</color>
+    <color name="bug">#C3D21F</color>
 </resources>

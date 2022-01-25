@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/ic_baseline_pest_control_rodent_24"
-        android:background="@drawable/circle"
+        android:background="@drawable/rect_round"
         android:backgroundTint="@color/transparent_black" />
 
     <androidx.appcompat.widget.AppCompatTextView

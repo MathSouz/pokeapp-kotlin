@@ -10,13 +10,14 @@ class SimplePokemonMapper : DomainMapper<SimplePokemonResponse, SimplePokemon> {
         return SimplePokemon(
             pokemonId = pokemonIdInURL.toInt(),
             name = from.name,
-            imageUrl = parsePokemonIDToSimpleSpriteURL(pokemonIdInURL))
+            imageUrl = parsePokemonIDToSimpleSpriteURL(pokemonIdInURL)
+        )
     }
 
     override fun toDomain(from: List<SimplePokemonResponse>): List<SimplePokemon> =
         from.map { toDomain(it) }
 
-    private fun parsePokemonIDToSimpleSpriteURL(id : String) : String =
+    private fun parsePokemonIDToSimpleSpriteURL(id: String): String =
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png"
 
 }

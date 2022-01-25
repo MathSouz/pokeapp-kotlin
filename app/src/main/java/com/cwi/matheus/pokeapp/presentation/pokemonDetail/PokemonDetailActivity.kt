@@ -1,14 +1,15 @@
 package com.cwi.matheus.pokeapp.presentation.pokemonDetail
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.cwi.matheus.pokeapp.R
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_ID
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_NAME
 import com.cwi.matheus.pokeapp.databinding.ActivityPokemonDetailBinding
-import com.cwi.matheus.pokeapp.extension.capitalize
 import com.cwi.matheus.pokeapp.extension.visibleOrGone
 import com.cwi.matheus.pokeapp.presentation.pokemonDetail.viewModel.PokemonDetailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -28,12 +29,10 @@ class PokemonDetailActivity : AppCompatActivity() {
         intent.extras?.let {
             val pokemonId = it.getInt(EXTRAS_POKEMON_ID)
             val pokemonName = it.getString(EXTRAS_POKEMON_NAME)
-            val capitalizedPokemonName = pokemonName?.capitalize()
 
-            binding.tvPokemonId.text = pokemonId.toString()
-            binding.tvPokemonName.text = capitalizedPokemonName
+            binding.tvPokemonName.setText(pokemonName, TextView.BufferType.EDITABLE)
             viewModel.fetchLocalPokemonDetail(pokemonId)
-            supportActionBar?.title = capitalizedPokemonName
+            supportActionBar?.title = pokemonName
 
             viewModel.error.observe(this) { error ->
                 binding.viewError.root.visibleOrGone(error)
@@ -51,14 +50,22 @@ class PokemonDetailActivity : AppCompatActivity() {
         }
 
         viewModel.currentPokemon.observe(this) { pokemon ->
-            binding.tvPokemonId.text = pokemon.id.toString()
-            binding.tvPokemonName.text = pokemon.name.capitalize()
+            binding.tvPokemonName.setText(pokemon.name, TextView.BufferType.EDITABLE)
             binding.tvPokemonWeight.text = getString(R.string.txt_pokemon_weight, pokemon.weight)
             binding.tvPokemonHeight.text = getString(R.string.txt_pokemon_height, pokemon.height)
             Glide.with(this).load(pokemon.imageUrl).into(binding.ivPokemonImage)
 
             binding.rvPokemonStatList.adapter = PokemonDetailAdapter(this, pokemon.stats)
             binding.rvPokemonStatList.layoutManager = GridLayoutManager(this, 2)
+
+            binding.tvPokemonName.addTextChangedListener {
+                binding.bSave.isEnabled = it.toString() != pokemon.name
+            }
+
+            binding.bSave.setOnClickListener {
+                pokemon.name = binding.tvPokemonName.text.toString()
+                viewModel.savePokemon(pokemon)
+            }
         }
     }
 

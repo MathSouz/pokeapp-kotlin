@@ -18,5 +18,5 @@
         android:id="@+id/pokemon_detail_fragment"
         android:name="com.cwi.matheus.pokeapp.presentation.pokemon.fragment.pokemonDetail.PokemonDetailFragment"
         android:label="PokemonDetailFragment"
-        tools:layout="@layout/fragment_pokemon_detail"/>
+        tools:layout="@layout/fragment_pokemon_detail" />
 </navigation>
