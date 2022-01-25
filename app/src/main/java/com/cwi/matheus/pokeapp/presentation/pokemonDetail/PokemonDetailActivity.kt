@@ -30,7 +30,7 @@ class PokemonDetailActivity : AppCompatActivity() {
             val pokemonId = it.getInt(EXTRAS_POKEMON_ID)
             val pokemonName = it.getString(EXTRAS_POKEMON_NAME)
 
-            binding.tvPokemonName.setText(pokemonName, TextView.BufferType.EDITABLE)
+            binding.etPokemonName.setText(pokemonName, TextView.BufferType.EDITABLE)
             viewModel.fetchLocalPokemonDetail(pokemonId)
             supportActionBar?.title = pokemonName
 
@@ -50,7 +50,7 @@ class PokemonDetailActivity : AppCompatActivity() {
         }
 
         viewModel.currentPokemon.observe(this) { pokemon ->
-            binding.tvPokemonName.setText(pokemon.name, TextView.BufferType.EDITABLE)
+            binding.etPokemonName.setText(pokemon.name, TextView.BufferType.EDITABLE)
             binding.tvPokemonWeight.text = getString(R.string.txt_pokemon_weight, pokemon.weight)
             binding.tvPokemonHeight.text = getString(R.string.txt_pokemon_height, pokemon.height)
             Glide.with(this).load(pokemon.imageUrl).into(binding.ivPokemonImage)
@@ -58,12 +58,12 @@ class PokemonDetailActivity : AppCompatActivity() {
             binding.rvPokemonStatList.adapter = PokemonDetailAdapter(this, pokemon.stats)
             binding.rvPokemonStatList.layoutManager = GridLayoutManager(this, 2)
 
-            binding.tvPokemonName.addTextChangedListener {
+            binding.etPokemonName.addTextChangedListener {
                 binding.bSave.isEnabled = it.toString() != pokemon.name
             }
 
             binding.bSave.setOnClickListener {
-                pokemon.name = binding.tvPokemonName.text.toString()
+                pokemon.name = binding.etPokemonName.text.toString()
                 viewModel.savePokemon(pokemon)
             }
         }

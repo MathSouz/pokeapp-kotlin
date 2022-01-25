@@ -36,7 +36,7 @@
             app:tint="@android:color/holo_green_light" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_pokemon_name"
+            android:id="@+id/et_pokemon_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -56,7 +56,7 @@
             app:layout_constraintBottom_toTopOf="@+id/tv_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_pokemon_image"
-            app:layout_constraintTop_toBottomOf="@id/tv_pokemon_name"
+            app:layout_constraintTop_toBottomOf="@id/et_pokemon_name"
             tools:itemCount="10"
             tools:listitem="@layout/view_type" />
 

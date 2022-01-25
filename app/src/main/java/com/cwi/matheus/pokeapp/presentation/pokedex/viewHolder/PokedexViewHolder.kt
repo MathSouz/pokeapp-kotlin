@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cwi.matheus.pokeapp.databinding.ItemPokedexBinding
 
 class PokedexViewHolder(viewHolder: View) : RecyclerView.ViewHolder(viewHolder) {
-    val tvPokemonName = ItemPokedexBinding.bind(viewHolder).tvPokemonName
+    val etPokemonName = ItemPokedexBinding.bind(viewHolder).etPokemonName
     val ivPokemonImage = ItemPokedexBinding.bind(viewHolder).ivPokemonImage
     val ivSelected = ItemPokedexBinding.bind(viewHolder).ivSelected
     val tvDate = ItemPokedexBinding.bind(viewHolder).tvDate

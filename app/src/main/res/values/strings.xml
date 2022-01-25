@@ -42,4 +42,5 @@
     <string name="txt_about">Sobre</string>
     <string name="txt_undo">Desfazer</string>
     <string name="txt_license_label">Licença</string>
+    <string name="txt_save">Salvar</string>
 </resources>

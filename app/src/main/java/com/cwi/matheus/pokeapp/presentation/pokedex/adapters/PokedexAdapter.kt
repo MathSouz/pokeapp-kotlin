@@ -43,7 +43,7 @@ class PokedexAdapter(
 
     override fun onBindViewHolder(holder: PokedexViewHolder, position: Int) {
         list[position].let { pokemon ->
-            holder.tvPokemonName.text = pokemon.name
+            holder.etPokemonName.text = pokemon.name
 
             Glide.with(context)
                 .load(pokemon.imageUrl)
