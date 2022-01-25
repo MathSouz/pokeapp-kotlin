@@ -19,8 +19,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_pokemon_image"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
+                android:layout_width="@dimen/pokemon_detail_image"
+                android:layout_height="@dimen/pokemon_detail_image"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/rect_round"
                 android:backgroundTint="@color/transparent_black"

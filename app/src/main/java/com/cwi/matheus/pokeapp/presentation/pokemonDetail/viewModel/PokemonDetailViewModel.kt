@@ -16,9 +16,10 @@ class PokemonDetailViewModel(
     private val _currentPokemon = MutableLiveData<Pokemon>()
     val currentPokemon: LiveData<Pokemon> = _currentPokemon
 
-    fun savePokemon(pokemon: Pokemon) {
+    fun savePokemon(pokemon: Pokemon, onSave: () -> Unit) {
         launch {
             localRepository.update(pokemon)
+            onSave()
         }
     }
 

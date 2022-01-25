@@ -2,6 +2,7 @@ package com.cwi.matheus.pokeapp.presentation.pokemonDetail
 
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,6 +12,7 @@ import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_ID
 import com.cwi.matheus.pokeapp.base.EXTRAS_POKEMON_NAME
 import com.cwi.matheus.pokeapp.databinding.ActivityPokemonDetailBinding
 import com.cwi.matheus.pokeapp.extension.visibleOrGone
+import com.cwi.matheus.pokeapp.presentation.extension.showToast
 import com.cwi.matheus.pokeapp.presentation.pokemonDetail.viewModel.PokemonDetailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -64,7 +66,13 @@ class PokemonDetailActivity : AppCompatActivity() {
 
             binding.bSave.setOnClickListener {
                 pokemon.name = binding.etPokemonName.text.toString()
-                viewModel.savePokemon(pokemon)
+                viewModel.savePokemon(pokemon) {
+                    binding.bSave.isEnabled = false
+                    val pokemonChangesSuccessString =
+                        getString(R.string.txt_pokemon_changes_success)
+                    showToast(pokemonChangesSuccessString)
+                }
+
             }
         }
     }
