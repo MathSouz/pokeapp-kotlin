@@ -11,11 +11,11 @@ import com.cwi.matheus.pokeapp.databinding.ActivityPokedexBinding
 import com.cwi.matheus.pokeapp.domain.entity.Pokemon
 import com.cwi.matheus.pokeapp.extension.visibleOrGone
 import com.cwi.matheus.pokeapp.presentation.base.BaseBottomNavigationActivity
+import com.cwi.matheus.pokeapp.presentation.extension.showConfirmDialog
 import com.cwi.matheus.pokeapp.presentation.pokedex.adapters.OnPokemonSelectionListener
 import com.cwi.matheus.pokeapp.presentation.pokedex.adapters.PokedexAdapter
 import com.cwi.matheus.pokeapp.presentation.pokedex.viewModel.PokedexViewModel
 import com.cwi.matheus.pokeapp.presentation.pokemonDetail.PokemonDetailActivity
-import com.cwi.matheus.pokeapp.util.showConfirmDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -78,7 +78,7 @@ class PokedexActivity : BaseBottomNavigationActivity() {
     }
 
     private fun onMenuDeleteClick() {
-        showConfirmDialog(this, "Essa ação não poderá ser desfeita!") {
+        showConfirmDialog("Essa ação não poderá ser desfeita!") {
             for (selectedPokemon in adapter.selectedPokemons) {
                 viewModel.deletePokemonFromPokedex(selectedPokemon)
             }
