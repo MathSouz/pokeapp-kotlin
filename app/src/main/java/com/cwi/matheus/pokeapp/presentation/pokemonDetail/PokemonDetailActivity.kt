@@ -2,7 +2,6 @@ package com.cwi.matheus.pokeapp.presentation.pokemonDetail
 
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.GridLayoutManager

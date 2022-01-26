@@ -13,4 +13,6 @@ interface SharedPreferencesRepository {
     fun readInt(key: String, default: Int): Int
     fun readLong(key: String, default: Long): Long
     fun readString(key: String, default: String): String?
+
+    fun contains(key: String) : Boolean
 }

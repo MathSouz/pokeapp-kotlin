@@ -78,7 +78,8 @@ class PokedexActivity : BaseBottomNavigationActivity() {
     }
 
     private fun onMenuDeleteClick() {
-        showConfirmDialog("Essa ação não poderá ser desfeita!") {
+        val undoneableAction = getString(R.string.txt_undoneable_action)
+        showConfirmDialog(undoneableAction) {
             for (selectedPokemon in adapter.selectedPokemons) {
                 viewModel.deletePokemonFromPokedex(selectedPokemon)
             }
@@ -90,7 +91,8 @@ class PokedexActivity : BaseBottomNavigationActivity() {
     private fun onChangeSelection() {
         val selectedPokemons = adapter.selectedPokemons
         binding.toolbar.visibleOrGone(selectedPokemons.isNotEmpty())
-        binding.toolbar.title = "${selectedPokemons.size} selecionados"
+        val selectedPokemonsText = getString(R.string.txt_selected, selectedPokemons.size)
+        binding.toolbar.title = selectedPokemonsText
         binding.toolbar.menu.children.iterator().forEach {
             it.isVisible = selectedPokemons.isNotEmpty()
         }

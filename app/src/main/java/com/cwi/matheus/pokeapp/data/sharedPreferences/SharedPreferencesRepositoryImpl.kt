@@ -61,4 +61,8 @@ class SharedPreferencesRepositoryImpl(private val context: Context) : SharedPref
     override fun readString(key: String, default: String): String? =
         context.getSharedPreferences(POKEAPP_PREFERENCES, AppCompatActivity.MODE_PRIVATE)
             .getString(key, default)
+
+    override fun contains(key: String): Boolean =
+        context.getSharedPreferences(POKEAPP_PREFERENCES, AppCompatActivity.MODE_PRIVATE)
+            .contains(key)
 }

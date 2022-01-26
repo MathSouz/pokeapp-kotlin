@@ -23,8 +23,20 @@ class MainApplication : Application() {
             modules(appModules)
         }
 
+        setupDarkMode()
+    }
+
+    private fun setupDarkMode() {
         val sharedPreferences = SharedPreferencesRepositoryImpl(this)
-        val darkMode = sharedPreferences.readBoolean(SHARED_PREFERENCE_DARK_MODE, true)
+
+        val defaultDarkModeState = true
+
+        if (!sharedPreferences.contains(SHARED_PREFERENCE_DARK_MODE)) {
+            sharedPreferences.writeBoolean(SHARED_PREFERENCE_DARK_MODE, defaultDarkModeState)
+        }
+
+        val darkMode =
+            sharedPreferences.readBoolean(SHARED_PREFERENCE_DARK_MODE, defaultDarkModeState)
 
         setDarkMode(darkMode)
     }

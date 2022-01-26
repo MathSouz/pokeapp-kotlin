@@ -1,47 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PokeApp</string>
-    <string name="txt_pokemon_height">Altura: %1$d cm</string>
-    <string name="txt_pokemon_weight">Peso: %1$d KG</string>
-    <string name="txt_status">Estatísticas</string>
-    <string name="txt_capture">Capturar</string>
-    <string name="txt_set_free">Libertar</string>
+    <string name="app_name" translatable="false">PokeApp</string>
+    <string name="txt_pokemon_height">Height: %1$d cm</string>
+    <string name="txt_pokemon_weight">Weight: %1$d KG</string>
+    <string name="txt_status">Stats</string>
+    <string name="txt_capture">Capture</string>
+    <string name="txt_set_free">Set free</string>
     <string name="txt_wild_pokemons">Pokemons</string>
-    <string name="txt_my_pokedex">Meu Pokedex</string>
-    <string name="txt_set_free_pokemon_dialog_title_text">Realmente deseja libertar %1$s?</string>
-    <string name="txt_pokemon_captured">%1$s capturado!</string>
-    <string name="txt_pokemon_free">%1$s está livre!</string>
+    <string name="txt_my_pokedex">My Pokedex</string>
+    <string name="txt_set_free_pokemon_dialog_title_text">Are you sure want to set %1$s free?</string>
+    <string name="txt_pokemon_captured">%1$s captured!</string>
+    <string name="txt_pokemon_free">%1$s is free!</string>
     <string name="txt_pokemon_count">x%1$d</string>
-    <string name="txt_pokemon_date">%1$02d/%2$02d/%3$d (%4$02d:%5$02d:%6$02d) (há %7$d minutos)</string>
-    <string name="txt_yes">Sim</string>
-    <string name="txt_no">Não</string>
-    <string name="txt_loading">Carregando…</string>
-    <string name="txt_no_pokemon_on_pokedex">Ops!\nParece que você não capturou nenhum pokemon :(</string>
-    <string name="txt_err">Ops… parece que aconteceu um erro…</string>
-    <string name="txt_try_again">Tentar novamente</string>
-    <string name="txt_preferences">Preferências</string>
-    <string name="txt_uses_pokeapi">Essa aplicação utiliza o <a href="https://pokeapi.co/">PokeApi</a>.</string>
-    <string name="txt_2022">2022</string>
-    <string name="txt_techs">Também é utilizado Android X, Koin, Retrofit, Moshi, Glide, Room, Mockk, GSON</string>
-    <string name="txt_owner">Matheus M. Souza</string>
-    <string name="txt_made_by">Feito por</string>
-    <string name="txt_credits">Créditos</string>
+    <string name="txt_pokemon_date">%1$02d/%2$02d/%3$d (%4$02d:%5$02d:%6$02d) (%7$d minutes ago)</string>
+    <string name="txt_yes">Yes</string>
+    <string name="txt_no">No</string>
+    <string name="txt_loading">Loading…</string>
+    <string name="txt_no_pokemon_on_pokedex">Oops!\nLooks like you did not have captured any pokemon yet :(</string>
+    <string name="txt_err">Oops… looks like an error occurred…</string>
+    <string name="txt_try_again">Try again</string>
+    <string name="txt_preferences">Preferences</string>
+    <string name="txt_uses_pokeapi">This app uses the <a href="https://pokeapi.co/">PokeApi</a>.</string>
+    <string name="txt_2022" translatable="false">2022</string>
+    <string name="txt_techs">Is also used Android X, Koin, Retrofit, Moshi, Glide, Room, Mockk, GSON</string>
+    <string name="txt_owner" translatable="false">Matheus M. Souza</string>
+    <string name="txt_made_by">Made by</string>
+    <string name="txt_credits">Credits</string>
     <string name="txt_links">Links</string>
-    <string name="txt_github_link">Repositório no <a href="https://github.com/MathSouz/pokeapp-kotlin">Github</a></string>
+    <string name="txt_github_link">Repository on <a href="https://github.com/MathSouz/pokeapp-kotlin">Github</a></string>
     <string name="txt_license">Copyright 2022 Matheus M. Souza<br /><br />
         Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br /><br />
         The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<br /><br />
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     </string>
     <string name="txt_license_link"><a href="https://opensource.org/licenses/MIT">https://opensource.org/licenses/MIT</a></string>
-    <string name="txt_biometry_alert">Você definiu que a aplicação precisa de autenticação biométrica</string>
-    <string name="txt_cancel">Cancelar</string>
-    <string name="txt_biometric_authentication">Autenticação biométrica</string>
-    <string name="txt_option_auth">Exigir autenticação ao iniciar o app</string>
-    <string name="txt_option_dark_mode">Modo escuro (Reinicialização necessária)</string>
-    <string name="txt_options">Opções</string>
-    <string name="txt_about">Sobre</string>
-    <string name="txt_undo">Desfazer</string>
-    <string name="txt_license_label">Licença</string>
-    <string name="txt_save">Salvar</string>
-    <string name="txt_pokemon_changes_success">Mudanças feitas com sucesso!</string>
+    <string name="txt_biometry_alert">You have defined the app needs the biometric autentication</string>
+    <string name="txt_cancel">Cancelacancel</string>
+    <string name="txt_biometric_authentication">Biometric autentication</string>
+    <string name="txt_option_auth">Ask for biometric autentication on startup</string>
+    <string name="txt_option_dark_mode">Dark mode (Restart needed)</string>
+    <string name="txt_options">Options</string>
+    <string name="txt_about">About</string>
+    <string name="txt_undo">Undo</string>
+    <string name="txt_license_label">License</string>
+    <string name="txt_save">Save</string>
+    <string name="txt_pokemon_changes_success">Changes made successfully!</string>
+    <string name="txt_undoneable_action">This action cannot be undone!</string>
+    <string name="txt_selected">%1$d selected</string>
 </resources>

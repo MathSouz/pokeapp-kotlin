@@ -1,8 +1,6 @@
 package com.cwi.matheus.pokeapp.presentation.pokedex.adapters
 
 import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources

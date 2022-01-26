@@ -3,8 +3,6 @@ package com.cwi.matheus.pokeapp.presentation.preferences
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.widget.CompoundButton
-import androidx.appcompat.app.AppCompatDelegate
-import com.cwi.matheus.pokeapp.MainApplication
 import com.cwi.matheus.pokeapp.R
 import com.cwi.matheus.pokeapp.databinding.ActivityPreferencesBinding
 import com.cwi.matheus.pokeapp.presentation.base.BaseBottomNavigationActivity
